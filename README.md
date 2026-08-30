@@ -13,4 +13,11 @@ This repository is the working home for the Mother Editor project.
 4. Keep deployment-related code isolated and documented.
 
 ## Project structure
-The application source will be added here from the approved Mother Editor baseline.
+- `index.html` — approved landing-page baseline currently stored in the repository.
+- `CODEX.md` — instructions for safe AI-assisted development.
+
+## Branching
+Experimental/feature work should be done on a feature branch and reviewed before merging to `main`.
+
+## Deployment
+Cloudflare deployment is separate from this repository unless an explicit CI/CD workflow is configured and confirmed.
