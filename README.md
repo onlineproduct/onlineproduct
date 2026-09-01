@@ -1,16 +1,29 @@
-# Mother Editor
+# Cloudfloor Store — Worker v2.1 (Current Wrangler JSONC)
 
-This repository is the working home for the Mother Editor project.
+এই প্যাকেজ Cloudflare Wrangler-এর বর্তমান `wrangler.jsonc` configuration format অনুযায়ী তৈরি। পুরনো `wrangler.toml` রাখা হয়নি।
 
-## Baseline
-- Current baseline: Mother Editor Mobile V2.2.2
-- Target: mobile-first digital product landing-page editor
+## লক্ষ্য
+একবার Worker deploy করার পর D1-এ অসংখ্য landing page রাখা যাবে। প্রতিটি page-এর আলাদা slug/live URL থাকবে; page data update করতে Worker redeploy লাগবে না।
 
-## Development rules
-1. Preserve the V2.2.2 baseline before making changes.
-2. Make focused changes and avoid breaking existing editor functions.
-3. Test desktop and mobile behavior after UI changes.
-4. Keep deployment-related code isolated and documented.
+## Deploy
+1. Cloudflare account-এ login করুন।
+2. Wrangler দিয়ে project folder থেকে `wrangler deploy` চালান।
+3. `d1_databases`-এ `DB` binding এবং `cloudfloor_pages` database name দেওয়া আছে। Wrangler-এর supported automatic provisioning ব্যবহার করা হলে প্রথম deploy-এ resource তৈরি হতে পারে।
+4. Migration apply করুন যদি প্রয়োজন হয়: `npx wrangler d1 migrations apply cloudfloor_pages --remote`
 
-## Project structure
-The application source will be added here from the approved Mother Editor baseline.
+## API
+- POST /api/pages — নতুন page তৈরি; response-এ live URL
+- GET /api/pages — page list
+- GET /api/page/:id-or-slug — page data
+- PUT /api/pages/:id-or-slug — page update; redeploy নয়
+- DELETE /api/pages/:id-or-slug — page delete
+- GET /p/:slug — public live page
+
+## UI behavior
+- Mobile left edge swipe: Sections panel
+- Mobile right edge swipe: Style panel
+- Empty/scrim tap: panels close
+- Desktop: panels visible
+
+## Important
+এই project-এ D1 binding প্রয়োজন। Cloudflare Dashboard-এর সাধারণ static drag-and-drop uploader build/configured Worker project-এর পূর্ণ deployment support নাও দিতে পারে; Wrangler deployment is the reliable method for this project.
