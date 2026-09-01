@@ -1,22 +1,11 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Digital Product Landing Page Builder — editable sales page">
-<title>Digital Product Landing Page Builder</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloudfloor Store — Landing Page Builder 2.2</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap');
-:root{--primary:#6d28d9;--primary2:#8b5cf6;--blue:#2563eb;--green:#16a34a;--ink:#111936;--muted:#687087;--bg:#f5f7fb;--canvas:#fff;--line:#e5e7ef;--shadow:0 12px 35px rgba(17,25,54,.10);--radius:18px;--page-width:1120px;--font:'Noto Sans Bengali',sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--font);background:var(--bg);line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
-/* editor shell */
-.appbar{height:58px;background:#10162b;color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px;position:sticky;top:0;z-index:100}.brand{font-weight:900;display:flex;gap:8px;align-items:center;white-space:nowrap}.brand-badge{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,#7c3aed,#2563eb)}.app-actions{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}.topbtn{border:1px solid #39415d;background:#1a213a;color:#fff;border-radius:9px;padding:7px 11px;font-weight:700;font-size:13px}.topbtn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);border-color:transparent}.status{font-size:11px;color:#aeb7cf;display:none}.workspace{display:grid;grid-template-columns:245px minmax(420px,1fr) 285px;min-height:calc(100vh - 58px)}
-.sidebar{background:#fff;border-right:1px solid var(--line);padding:13px;overflow:auto;position:sticky;top:58px;height:calc(100vh - 58px);z-index:30}.rightbar{border-left:1px solid var(--line);border-right:0}.panel-title{font-size:13px;text-transform:uppercase;letter-spacing:.7px;color:#778097;font-weight:900;margin:5px 3px 10px}.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tool{background:#f8f9fc;border:1px solid #e8eaf1;border-radius:12px;padding:11px 7px;text-align:center;font-weight:800;font-size:12px}.tool:hover{border-color:#c7b6f7;background:#faf7ff}.tool .ico{font-size:20px;display:block;margin-bottom:2px}.side-section{padding:12px 0;border-top:1px solid #edf0f5;margin-top:12px}.template{padding:10px;border:1px solid #e6e8ef;border-radius:12px;margin-bottom:8px;background:#fff}.template strong{font-size:13px}.template small{display:block;color:var(--muted);font-size:11px;margin:2px 0 7px}.template button{width:100%;border:0;background:#111936;color:#fff;border-radius:8px;padding:7px;font-weight:800;font-size:12px}.help{font-size:11px;color:#788096;line-height:1.6}
-.canvas-wrap{padding:18px;overflow:auto;background:linear-gradient(135deg,#eef1f8,#f9fafc)}.canvas-tools{display:flex;justify-content:center;align-items:center;gap:7px;margin-bottom:13px;position:sticky;top:0;z-index:20}.viewbtn{border:1px solid #d9deea;background:#fff;border-radius:9px;padding:7px 12px;font-size:12px;font-weight:800}.viewbtn.active{background:#111936;color:#fff;border-color:#111936}.canvas{width:var(--page-width);max-width:100%;margin:0 auto;background:#fff;box-shadow:0 18px 50px rgba(17,25,54,.13);min-height:700px;transition:width .2s}.canvas.mobile{width:390px}.canvas.tablet{width:768px}
-/* page */
-.page{background:linear-gradient(135deg,#f7f1ff,#fff 48%,#eef5ff);min-height:100%;overflow:hidden}.nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#ffffffee;border-bottom:1px solid #eee8ff}.brand-page{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px}.logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;color:#fff}.lang{display:flex;border:1px solid #ddd5ee;border-radius:10px;overflow:hidden}.lang button{border:0;background:#fff;padding:7px 11px;font-weight:800;font-size:12px}.lang button.active{background:var(--primary);color:#fff}.hero{padding:48px 6% 30px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:30px;align-items:center}.badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;font-weight:800;font-size:13px}.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.08;letter-spacing:-1.4px;margin:17px 0 14px}.grad{background:linear-gradient(90deg,var(--primary),var(--blue),#db2777);-webkit-background-clip:text;color:transparent}.lead{font-size:18px;color:var(--muted);max-width:650px}.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 19px;border-radius:12px;font-weight:900;border:1px solid transparent}.btn-primary{background:linear-gradient(135deg,var(--primary),var(--blue));color:#fff}.btn-secondary{background:#fff;border-color:#ddd6ed}.trust{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.trust span{font-size:11px;background:#ffffffc9;border:1px solid #eee7ff;padding:6px 9px;border-radius:999px;font-weight:800}.hero-art{position:relative;min-height:320px}.device{position:absolute;right:3%;top:18px;width:78%;height:255px;border:7px solid #111936;border-radius:19px;background:#fff;box-shadow:0 22px 45px #26325a33;transform:rotate(-2deg);overflow:hidden}.device-top{height:28px;background:#f3f4f8;border-bottom:1px solid #ddd;padding:8px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#c4c7d1;margin-right:4px}.screen{padding:18px;background:linear-gradient(135deg,#f7f1ff,#edf5ff);height:100%}.screen-title{width:55%;height:14px;border-radius:8px;background:var(--primary);margin-bottom:13px}.screen-line{width:72%;height:8px;border-radius:6px;background:#d7dbe7;margin:8px 0}.screen-card{width:42%;height:100px;border-radius:12px;background:linear-gradient(135deg,var(--primary2),var(--blue));margin-top:15px}.phone{position:absolute;left:4%;bottom:4px;width:105px;height:195px;border:7px solid #111936;border-radius:21px;background:#fff;box-shadow:0 16px 35px #26325a33;overflow:hidden}.phone .screen{padding:11px}.phone .screen-card{width:100%;height:65px}.section{padding:30px 6%}.product{background:#ffffffd9;border:1px solid #e6ddf7;border-radius:22px;padding:24px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;box-shadow:var(--shadow)}.product h2{margin:0 0 7px;font-size:29px}.muted{color:var(--muted)}.checks{display:grid;gap:8px;margin-top:14px}.check{display:flex;gap:8px;align-items:flex-start;font-weight:700}.check i{font-style:normal;color:#fff;background:linear-gradient(135deg,var(--primary),var(--blue));width:21px;height:21px;border-radius:50%;display:grid;place-items:center;font-size:12px;flex:0 0 21px}.price{background:linear-gradient(145deg,#faf5ff,#f3e8ff);border:1px solid #e5d4ff;border-radius:18px;padding:20px}.price-now{font-size:45px;font-weight:950;margin:6px 0}.old{text-decoration:line-through;color:#9296a5}.offer{margin-top:12px;padding:9px;border-radius:10px;background:#fff;color:var(--primary);font-weight:900;text-align:center}.section-title{text-align:center;margin:0 0 17px;font-size:26px}.links{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.link-card{background:#fff;border:1px solid #e8e1f4;border-radius:17px;padding:18px;text-align:center;box-shadow:0 10px 28px #4c1d9510}.icon{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;color:#fff;font-size:21px}.buy .icon,.buy .link-btn{background:linear-gradient(135deg,var(--primary),var(--primary2))}.download .icon,.download .link-btn{background:linear-gradient(135deg,var(--blue),#06b6d4)}.whatsapp .icon,.whatsapp .link-btn{background:linear-gradient(135deg,#16a34a,#22c55e)}.link-card h3{margin:3px 0;font-size:19px}.link-card p{margin:0 0 11px;color:var(--muted);font-size:13px}.link-btn{display:flex;justify-content:center;padding:10px;border-radius:9px;color:#fff;font-weight:900}.payment{background:linear-gradient(135deg,#fff9ec,#fff4d8);border:1px solid #f3dfaa;border-radius:18px}.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pay{background:#ffffffaa;border:1px solid #eadfbf;border-radius:12px;padding:13px}.pay strong{display:block;margin-bottom:5px;font-size:13px}.field{padding:8px 9px;border:1px solid #ded7c7;background:#fff;border-radius:8px;color:#777}.faq{display:grid;gap:8px}.faq details{background:#fff;border:1px solid #e5def1;border-radius:12px;padding:12px 14px}.faq summary{cursor:pointer;font-weight:800}.countdown{display:flex;justify-content:center;gap:8px;margin:14px 0}.timebox{background:#111936;color:#fff;border-radius:10px;padding:8px 11px;min-width:55px;text-align:center}.timebox b{font-size:20px;display:block}.timebox small{font-size:9px;color:#b8c0d5}.footer{padding:22px;text-align:center;background:linear-gradient(135deg,#312e81,#5b21b6);color:#fff}.editable{outline:0;border-radius:5px}.selected{outline:2px solid #7c3aed;outline-offset:3px;position:relative}.editable.selected-edit{outline:2px solid #2563eb!important;outline-offset:2px;box-shadow:0 0 0 2px rgba(37,99,235,.12)}.block{position:relative}.block.selected:after{content:'Selected';position:absolute;top:5px;right:7px;background:#7c3aed;color:#fff;padding:2px 6px;border-radius:5px;font:700 9px system-ui;z-index:4}.dropzone{height:6px;margin:3px 0}.dropzone.over{background:#8b5cf6;border-radius:5px}
-/* properties */
-.prop{padding:13px}.prop h3{margin:3px 0 12px;font-size:15px}.prop label{display:block;font-size:11px;font-weight:800;color:#626b82;margin:10px 0 4px}.prop input,.prop select,.prop textarea{width:100%;border:1px solid #dce0e9;border-radius:8px;padding:8px;background:#fff;color:#17203c}.prop textarea{min-height:70px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mini{border:1px solid #dce0e9;background:#fff;border-radius:8px;padding:7px;font-weight:800;font-size:11px}.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.empty{color:#8b93a7;text-align:center;font-size:12px;padding:30px 10px}.layer{display:flex;align-items:center;gap:7px;padding:8px;border:1px solid #e7e9ef;border-radius:9px;margin-bottom:6px;background:#fff;font-size:12px}.layer button{margin-left:auto;border:0;background:none}.notice{position:fixed;bottom:16px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;background:#111936;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:800;z-index:999;transition:.2s}.notice.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:1050px){.workspace{grid-template-columns:210px minmax(400px,1fr)}.rightbar{position:fixed;right:0;top:58px;height:calc(100vh - 58px);width:285px;transform:translateX(100%);transition:.2s;box-shadow:-10px 0 30px #0001}.rightbar.open{transform:none}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:260px}.product{grid-template-columns:1fr}}
+o-art{min-height:260px}.product{grid-template-columns:1fr}}
 /* V2.1 stability + editor polish */
 .tool,.topbtn,.viewbtn,.mini,.template button,.lang button{touch-action:manipulation}
 .editable[contenteditable="true"]{cursor:text}
@@ -129,59 +118,155 @@
   .phone{width:66px;height:121px}
   .timebox{min-width:54px}
 }
+@media(max-width:900px){.sidebar{width:min(86vw,320px);padding:10px 12px 88px}.smart-tools .tool{min-height:56px}.drawer-label{font-size:12px;margin-bottom:8px}.panel-title{font-size:14px}.mobile-drawer-head{margin:-10px -12px 12px;padding:10px 12px}}
 @media(min-width:901px){.preview-exit{display:none}}
+#publishLayer{position:fixed;right:14px;top:70px;z-index:1000;font-family:var(--font);pointer-events:none}#publishPanel{display:none;pointer-events:auto;width:min(340px,calc(100vw - 28px));padding:14px;background:#fff;border:1px solid #e5e7ef;border-radius:16px;box-shadow:0 18px 55px rgba(17,25,54,.18)}#publishPanel.open{display:block}#publishPanel h3{margin:0 0 10px;font-size:15px}#publishPanel input{width:100%;min-height:42px;border:1px solid #d9deea;border-radius:10px;padding:9px 11px;margin-bottom:8px}#publishPanel .publish-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}#publishPanel button{min-height:42px;border:1px solid #d9deea;border-radius:10px;background:#fff;font-weight:800}#publishPanel .publish-go{border-color:transparent;color:#fff;background:linear-gradient(135deg,#7c3aed,#2563eb)}#publishStatus{font-size:11px;color:#667085;line-height:1.45;margin-top:8px;word-break:break-word}@media(max-width:600px){.smart-tools{grid-template-columns:1fr;gap:9px}.smart-tools .tool{height:56px;min-height:56px;border-radius:12px;padding:10px 13px;font-size:15px}.smart-tools .ico{width:28px;height:28px;font-size:18px}#publishLayer{right:10px;top:64px}}
+
+/* FINAL MOBILE SMART-TOOLS OVERRIDE — image-style glossy buttons */
+.smart-tools{display:flex!important;flex-direction:column!important;gap:10px!important;padding:2px 0 12px!important}
+.smart-tools .tool{width:100%!important;height:56px!important;min-height:56px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0 12px!important;border:2px solid rgba(0,0,0,.22)!important;border-radius:10px!important;color:#fff!important;font-size:18px!important;font-weight:900!important;letter-spacing:0!important;text-align:center!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -2px 0 rgba(0,0,0,.16),0 3px 7px rgba(0,0,0,.20)!important;text-shadow:0 1px 2px rgba(0,0,0,.45)!important;position:relative!important;overflow:hidden!important;transition:transform .1s ease,filter .1s ease!important}
+.smart-tools .tool::after{content:''!important;position:absolute!important;inset:0!important;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 42%,rgba(0,0,0,.10))!important;pointer-events:none!important}
+.smart-tools .tool .ico{width:auto!important;height:auto!important;display:inline!important;flex:0 0 auto!important;margin:0!important;font-size:18px!important;line-height:1!important;color:inherit!important;position:relative!important;z-index:1!important}
+.smart-tools .tool>span:last-child{position:relative!important;z-index:1!important}
+.smart-tools .tool:nth-child(1){background:linear-gradient(180deg,#ff2020,#c90000)!important;border-color:#a90000!important}
+.smart-tools .tool:nth-child(2){background:linear-gradient(180deg,#2c87ed,#075ab9)!important;border-color:#064b98!important}
+.smart-tools .tool:nth-child(3){background:linear-gradient(180deg,#ffc21a,#ee9a00)!important;border-color:#d18100!important;color:#111!important;text-shadow:none!important}
+.smart-tools .tool:nth-child(4){background:linear-gradient(180deg,#32c532,#12920f)!important;border-color:#0b7609!important}
+.smart-tools .tool:nth-child(5){background:linear-gradient(180deg,#8848df,#5520a7)!important;border-color:#43147f!important}
+.smart-tools .tool:nth-child(6){background:linear-gradient(180deg,#ff8615,#ed5800)!important;border-color:#c94a00!important}
+.smart-tools .tool:nth-child(7){background:linear-gradient(180deg,#20c9a7,#079783)!important;border-color:#057663!important}
+.smart-tools .tool:nth-child(8){background:linear-gradient(180deg,#2b84e8,#0758b9)!important;border-color:#064a98!important}
+.smart-tools .tool:nth-child(9){background:linear-gradient(180deg,#a14bdd,#6c1db2)!important;border-color:#54138f!important}
+.smart-tools .tool:nth-child(10){background:linear-gradient(180deg,#333,#111)!important;border-color:#050505!important}
+.smart-tools .tool:nth-child(11){background:linear-gradient(180deg,#ef2424,#c90808)!important;border-color:#a80707!important}
+.smart-tools .tool:nth-child(12){background:linear-gradient(180deg,#25b8d9,#0789ae)!important;border-color:#067394!important}
+.smart-tools .tool:nth-child(13){background:linear-gradient(180deg,#ffc21a,#f1a500)!important;border-color:#d58f00!important;color:#111!important;text-shadow:none!important}
+.smart-tools .tool:active{transform:scale(.985)!important;filter:brightness(.97)!important}
+.smart-tools .tool:hover{filter:brightness(1.04)!important;transform:none!important}
+@media(max-width:900px){.sidebar{width:min(86vw,330px)!important}.smart-tools .tool{height:58px!important;min-height:58px!important;font-size:18px!important;border-radius:10px!important}.smart-tools{gap:9px!important}}
+@media(max-width:420px){.sidebar{width:min(90vw,330px)!important}.smart-tools .tool{height:56px!important;min-height:56px!important;font-size:17px!important}}
 </style>
+
+<style id="mobile-ui-final-fix">
+/* FINAL MOBILE UI — keeps existing functions, fixes overflow and makes Tools match the requested style */
+@media (max-width:900px){
+  body{overflow-x:hidden;padding-bottom:var(--mobile-nav-h,72px)}
+  .appbar{height:64px!important;min-height:64px!important;padding:0 8px!important;gap:5px!important;overflow:hidden!important}
+  .brand{min-width:0!important;max-width:112px!important;flex:0 1 112px!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:15px!important}
+  .brand-badge{width:34px!important;height:34px!important;flex:0 0 34px!important}
+  .appbar>.topbtn{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:42px!important;padding:7px 9px!important;font-size:12px!important;white-space:nowrap!important;flex:0 0 auto!important}
+  .appbar>.topbtn:nth-of-type(1){width:92px!important}
+  .appbar>.topbtn:nth-of-type(2){width:108px!important}
+  .app-actions{display:flex!important;flex:0 0 auto!important;margin-left:0!important;gap:0!important;overflow:visible!important}
+  .app-actions .topbtn{display:none!important}
+  .app-actions .topbtn.primary{display:inline-flex!important;min-height:42px!important;width:74px!important;padding:7px 7px!important;font-size:11px!important}
+  .workspace{display:block!important;min-height:calc(100dvh - 64px)!important;margin-top:64px!important}
+  .canvas-wrap{padding:10px 6px 90px!important;min-height:calc(100dvh - 64px)!important}
+  .sidebar{top:64px!important;height:calc(100dvh - 64px)!important;width:min(88vw,340px)!important;padding:10px 12px 96px!important;z-index:500!important}
+  .smart-tools{display:grid!important;grid-template-columns:1fr!important;gap:9px!important;padding:0 0 10px!important}
+  .smart-tools .tool{width:100%!important;height:58px!important;min-height:58px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:10px!important;padding:0 14px!important;border-radius:11px!important;font-size:18px!important;font-weight:900!important;box-sizing:border-box!important}
+  .smart-tools .tool .ico{width:30px!important;height:30px!important;display:grid!important;place-items:center!important;font-size:19px!important;flex:0 0 30px!important;margin:0!important}
+  .mobile-drawer-head{position:sticky!important;top:-10px!important;z-index:10!important;background:rgba(255,255,255,.98)!important}
+  .mobile-back{min-height:40px!important;min-width:42px!important}
+  .canvas-tools{overflow-x:auto!important;white-space:nowrap!important}
+  .viewbtn{flex:0 0 auto!important;min-height:48px!important;font-size:14px!important}
+  .mobile-bottom-nav{height:74px!important;padding-bottom:calc(7px + env(safe-area-inset-bottom))!important}
+  .mobile-bottom-nav button{font-size:11px!important;min-height:58px!important}
+  .mobile-bottom-nav button .micon{font-size:24px!important}
+}
+@media (max-width:420px){
+  .appbar{padding:0 6px!important;gap:4px!important}
+  .brand{max-width:98px!important;flex-basis:98px!important;font-size:14px!important}
+  .appbar>.topbtn:nth-of-type(1){width:86px!important;font-size:11px!important}
+  .appbar>.topbtn:nth-of-type(2){width:100px!important;font-size:11px!important}
+  .app-actions .topbtn.primary{width:68px!important;font-size:10px!important}
+  .smart-tools .tool{height:56px!important;min-height:56px!important;font-size:17px!important}
+}
+</style>
+
 </head>
-<body>
-<header class="appbar"><div class="brand"><span class="brand-badge">◆</span><span>DP Landing Builder</span></div><button class="topbtn" onclick="toggleLeft()">☰ Tools</button><button class="topbtn" onclick="toggleRight()">⚙ Properties</button><div class="app-actions"><button class="topbtn" onclick="undo()">↶</button><button class="topbtn" onclick="redo()">↷</button><button class="topbtn" onclick="saveProject()">💾 Save</button><button class="topbtn" onclick="loadProject()">📂 Load</button><button class="topbtn primary" onclick="openPublish()">🚀 Publish</button><button class="topbtn" onclick="downloadHTML()">⬇ Export HTML</button></div></header>
+<body class="">
+
+
+<div id="publishLayer"><div id="publishPanel"><h3>🚀 Publish Page</h3><input id="publishSlug" value="my-digital-product" placeholder="page-slug"><div class="publish-row"><button type="button" onclick="closePublishPanel()">Cancel</button><button type="button" class="publish-go" onclick="publishCurrentPage()">Publish</button></div><div id="publishStatus">Clean HTML তৈরি করে Cloudflare-এ publish করবে।</div></div></div>
 
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobilePanels()"></div>
-<button class="preview-exit" id="previewExit" onclick="exitPreview()">✕ Exit Preview</button>
+
 <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile editor navigation">
-  <button onclick="openMobilePanel('tools')"><span class="micon">☰</span><span>Tools</span></button>
-  <button class="active" onclick="showCanvas()"><span class="micon">▣</span><span>Canvas</span></button>
-  <button class="add" onclick="openAddMenu()"><span class="micon">＋</span><span>Add</span></button>
-  <button onclick="openMobilePanel('props')"><span class="micon">⚙</span><span>Properties</span></button>
-  <button onclick="enterPreview()"><span class="micon">👁</span><span>Preview</span></button>
+  <button type="button" onclick="toggleLeft()"><span class="micon">☰</span>Tools</button>
+  <button type="button" onclick="showCanvas()"><span class="micon">⌂</span>Canvas</button>
+  <button class="add" type="button" onclick="openAddMenu()"><span class="micon">＋</span>Add</button>
+  <button type="button" onclick="toggleRight()"><span class="micon">⚙</span>Props</button>
+  <button type="button" onclick="enterPreview()"><span class="micon">◉</span>Preview</button>
 </nav>
-<div class="workspace">
-<aside class="sidebar" id="leftbar"><div class="mobile-drawer-head"><button type="button" class="mobile-back" onclick="closeMobilePanels()">← <span>ফিরে যান</span></button><strong>Tools</strong></div>
-<div class="panel-title">Add Elements</div><div class="tool-grid">
-<button class="tool" onclick="addBlock('text')"><span class="ico">T</span>Text</button><button class="tool" onclick="addBlock('image')"><span class="ico">🖼</span>Image</button><button class="tool" onclick="addBlock('button')"><span class="ico">▣</span>Button</button><button class="tool" onclick="addBlock('offer')"><span class="ico">🔥</span>Offer</button><button class="tool" onclick="addBlock('countdown')"><span class="ico">⏱</span>Timer</button><button class="tool" onclick="addBlock('faq')"><span class="ico">?</span>FAQ</button><button class="tool" onclick="addBlock('payment')"><span class="ico">৳</span>Payment</button><button class="tool" onclick="addBlock('spacer')"><span class="ico">↕</span>Spacer</button></div>
-<div class="side-section"><div class="panel-title">Templates</div><div class="template"><strong>Digital Product</strong><small>Sales + offer + payment</small><button onclick="applyTemplate('product')">Use Template</button></div><div class="template"><strong>Course</strong><small>Course sales layout</small><button onclick="applyTemplate('course')">Use Template</button></div><div class="template"><strong>Minimal</strong><small>Clean product page</small><button onclick="applyTemplate('minimal')">Use Template</button></div></div>
-<div class="side-section"><div class="panel-title">Project</div><button class="mini" style="width:100%;margin-bottom:7px" onclick="exportJSON()">Export Project JSON</button><button class="mini" style="width:100%" onclick="importJSON()">Import Project JSON</button></div>
-<div class="side-section"><div class="panel-title">Tips</div><div class="help">• Canvas-এর যেকোনো section-এ ক্লিক করুন।<br>• Right Properties থেকে edit করুন।<br>• Section ধরে drag করে order বদলান।<br>• Export করলে editor ছাড়া clean HTML পাওয়া যাবে।</div></div>
-</aside>
-<main class="canvas-wrap" id="canvasWrap"><div class="canvas-tools"><button class="viewbtn active" data-view="desktop" onclick="setView('desktop',this)">🖥 Desktop</button><button class="viewbtn" data-view="tablet" onclick="setView('tablet',this)">▣ Tablet</button><button class="viewbtn" data-view="mobile" onclick="setView('mobile',this)">📱 Mobile</button><label class="viewbtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">🎨 Canvas UI <input id="canvasUiColor" type="color" value="#eef1f8" title="Canvas interface color" style="width:28px;height:28px;padding:0;border:0;background:transparent"></label><span id="saveStatus" class="status">Saved</span></div>
-<div class="canvas" id="canvas"><div class="page" id="page">
-<section class="block" data-type="hero" draggable="true"><div class="nav editable-block"><a class="brand-page editable" data-edit="brand">YOUR BRAND</a><div class="lang"><button class="active" type="button" onclick="setLang('bn')">বাংলা</button><button type="button" onclick="setLang('en')">English</button></div></div><div class="hero"><div class="hero-grid"><div><span class="badge editable" data-edit="badge">✦ প্রফেশনাল Landing Page</span><h1 class="editable" data-edit="headline">আপনার ডিজিটাল পণ্যের জন্য একটি <span class="grad">Professional Sales Page</span></h1><p class="lead editable" data-edit="lead">কোডিংয়ের ঝামেলা ছাড়াই আপনার পণ্যকে সুন্দরভাবে উপস্থাপন করুন এবং কাস্টমারকে দ্রুত সিদ্ধান্ত নিতে সাহায্য করুন।</p><div class="ctas"><a class="btn btn-primary editable" data-edit="cta1" href="#buy">এখনই কিনুন</a><a class="btn btn-secondary editable" data-edit="cta2" href="#features">বিস্তারিত দেখুন</a></div><div class="trust"><span>✓ Mobile Responsive</span><span>✓ Easy to Customize</span><span>✓ Sales Ready</span></div></div><div class="hero-art"><div class="device"><div class="device-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="screen"><div class="screen-title"></div><div class="screen-line"></div><div class="screen-line" style="width:55%"></div><div class="screen-card"></div></div></div><div class="phone"><div class="screen"><div class="screen-title" style="width:65%"></div><div class="screen-card"></div><div class="screen-line"></div></div></div></div></div></div></section>
-<div class="dropzone"></div>
-<section class="block section" id="features" data-type="product" draggable="true"><div class="product"><div><h2 class="editable" data-edit="productTitle">Professional Digital Product Template</h2><p class="muted editable" data-edit="productDesc">নিজের নাম, ছবি, লেখা, দাম ও লিংক বসিয়ে ব্যবহার করুন। এটি একটি sales-ready layout হিসেবে তৈরি করা হয়েছে।</p><div class="checks"><div class="check">✓ Professional & Modern Design</div><div class="check">✓ Mobile + Desktop Responsive</div><div class="check">✓ Easy Customization</div><div class="check">✓ Buy, Download & WhatsApp Link</div><div class="check">✓ Payment & FAQ Section</div></div></div><aside class="price"><small>আজকের মূল্য</small><div class="price-now">৳ <span class="editable" data-edit="price">499</span></div><div class="old">৳ <span class="editable" data-edit="oldPrice">999</span></div><div class="offer">🔥 Limited Time Offer</div></aside></div></section>
-<div class="dropzone"></div>
-<section class="block section" id="buy" data-type="links" draggable="true"><h2 class="section-title">গুরুত্বপূর্ণ <span class="grad">লিংকসমূহ</span></h2><div class="links"><div class="link-card buy"><div class="icon">🛒</div><h3>Buy Now</h3><p>পেমেন্ট / অর্ডার করতে</p><a class="link-btn editable" data-edit="buyBtn" href="#">এখনই অর্ডার করুন</a></div><div class="link-card download"><div class="icon">↓</div><h3>Download</h3><p>পেমেন্টের পর ফাইল নিন</p><a class="link-btn editable" data-edit="downloadBtn" href="#">Download</a></div><div class="link-card whatsapp"><div class="icon">◔</div><h3>WhatsApp</h3><p>যোগাযোগ / হেল্প সাপোর্ট</p><a class="link-btn editable" data-edit="waBtn" href="#">WhatsApp Support</a></div></div></section>
-<div class="dropzone"></div>
-<section class="block section payment" data-type="payment" draggable="true"><h2 class="section-title">পেমেন্ট করুন</h2><div class="pay-grid"><div class="pay"><strong>🪽 bKash</strong><div class="field editable" data-edit="bkash">01XXXXXXXXX</div></div><div class="pay"><strong>◉ Nagad</strong><div class="field editable" data-edit="nagad">01XXXXXXXXX</div></div><div class="pay"><strong>▣ Payment Reference</strong><div class="field editable" data-edit="reference">YOUR_REFERENCE</div></div></div><p style="text-align:center;margin-bottom:0">Payment করার পর WhatsApp/Support-এ Payment Reference পাঠান।</p></section>
-<div class="dropzone"></div>
-<section class="block section" data-type="countdown" draggable="true"><h2 class="section-title">অফার শেষ হবে</h2><div class="countdown" id="countdown"><div class="timebox"><b id="dd">02</b><small>দিন</small></div><div class="timebox"><b id="hh">12</b><small>ঘণ্টা</small></div><div class="timebox"><b id="mm">30</b><small>মিনিট</small></div><div class="timebox"><b id="ss">00</b><small>সেকেন্ড</small></div></div></section>
-<div class="dropzone"></div>
-<section class="block section" data-type="faq" draggable="true"><h2 class="section-title">❓ সাধারণ জিজ্ঞাসা</h2><div class="faq"><details open><summary>আমি কী পাব?</summary><p class="editable">একটি সম্পূর্ণ editable digital product sales page template পাবেন।</p></details><details><summary>Payment করার পর কীভাবে পাব?</summary><p class="editable">আপনার নির্ধারিত delivery process অনুযায়ী file বা download link দেওয়া হবে।</p></details><details><summary>নিজের দাম কি দিতে পারব?</summary><p class="editable">হ্যাঁ, Price field থেকে আপনার নিজের দাম বসাতে পারবেন।</p></details></div></section>
-<div class="dropzone"></div><footer class="footer block" data-type="footer" draggable="true">© 2026 YOUR BRAND. All Rights Reserved.</footer>
-</div></div></main>
-<aside class="sidebar rightbar" id="rightbar"><div class="mobile-drawer-head"><button type="button" class="mobile-back" onclick="closeMobilePanels()">← <span>ফিরে যান</span></button><strong>Properties</strong></div><div class="prop" id="properties"><div class="empty">কোনো element select করুন।<br>তারপর এখানে settings দেখা যাবে।</div></div></aside>
-</div><div class="notice" id="notice"></div>
-<input type="file" id="imageInput" accept="image/*" hidden><input type="file" id="jsonInput" accept="application/json,.json" hidden>
-<div id="publishModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(9,13,29,.55);backdrop-filter:blur(3px);padding:18px;align-items:center;justify-content:center">
-  <div style="width:min(440px,100%);background:#fff;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.25);padding:18px">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><strong style="font-size:18px">🚀 Publish Landing Page</strong><button type="button" onclick="closePublish()" style="margin-left:auto;border:1px solid #dce1eb;background:#fff;border-radius:9px;padding:7px 10px;font-weight:900">✕</button></div>
-    <label style="display:block;font-size:12px;font-weight:800;color:#626b82;margin:10px 0 4px">Page Name</label>
-    <input id="publishName" type="text" placeholder="My Digital Product" style="width:100%;border:1px solid #dce0e9;border-radius:9px;padding:10px">
-    <label style="display:block;font-size:12px;font-weight:800;color:#626b82;margin:10px 0 4px">URL Slug</label>
-    <input id="publishSlug" type="text" placeholder="my-product" style="width:100%;border:1px solid #dce0e9;border-radius:9px;padding:10px">
-    <p style="font-size:11px;color:#788096;margin:8px 0 12px">Live URL হবে: <b id="publishPreviewUrl">/p/my-product</b></p>
-    <button id="publishSubmit" type="button" onclick="publishProject()" style="width:100%;border:0;border-radius:10px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;font-weight:900">🚀 Publish Now</button>
-    <div id="publishResult" style="display:none;margin-top:12px;padding:12px;border-radius:10px;background:#ecfdf5;color:#166534;font-size:12px"></div>
+<header class="appbar">
+  <div class="brand"><span class="brand-badge">M</span><span>Mother Editor</span></div>
+  <button class="topbtn" type="button" onclick="toggleLeft()">☰ Tools</button>
+  <button class="topbtn" type="button" onclick="toggleRight()">⚙ Properties</button>
+  <div class="app-actions">
+    <button class="topbtn primary" type="button" aria-label="Publish" onclick="openPublishPanel()">🚀 Publish</button>
+    <button class="topbtn" type="button" onclick="undo()">↶ Undo</button>
+    <button class="topbtn" type="button" onclick="redo()">↷ Redo</button>
+    <button class="topbtn" type="button" onclick="saveProject()">💾 Save</button>
+    <button class="topbtn" type="button" onclick="loadProject()">↥ Load</button>
   </div>
+  <span id="saveStatus" class="status" style="display:none">Saved</span>
+</header>
+
+<div class="workspace" style="grid-template-columns:240px minmax(0,1fr) 285px;">
+  <aside class="sidebar" id="leftbar">
+    <div class="mobile-drawer-head"><button class="mobile-back" type="button" onclick="closeMobilePanels()">←</button><strong>Tools</strong></div>
+    <div class="panel-title">Tools</div>
+    <div class="drawer-label">Smart Tools</div>
+    <div class="smart-tools">
+      <button class="tool tool-action" type="button" onclick="addBlock('text')"><span class="ico">T</span><span>Text</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('button')"><span class="ico">▣</span><span>Button</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('image')"><span class="ico">🖼</span><span>Image</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('offer')"><span class="ico">🔥</span><span>Offer</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('countdown')"><span class="ico">⏱</span><span>Countdown</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('payment')"><span class="ico">৳</span><span>Payment</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('spacer')"><span class="ico">↕</span><span>Spacer</span></button>
+      <button class="tool tool-action" type="button" onclick="addBlock('faq')"><span class="ico">?</span><span>FAQ</span></button>
+      <button class="tool tool-action" type="button" onclick="importJSON()"><span class="ico">↙</span><span>Input JSON</span></button>
+      <button class="tool tool-action" type="button" onclick="exportJSON()"><span class="ico">↗</span><span>Output JSON</span></button>
+      <button class="tool tool-action" type="button" onclick="downloadHTML()"><span class="ico">HTML</span><span>HTML</span></button>
+      <button class="tool tool-action" type="button" onclick="enterPreview()"><span class="ico">◉</span><span>Preview</span></button>
+      <button class="tool tool-action live" type="button" onclick="openLivePage()"><span class="ico">↗</span><span>Live</span></button>
+    </div>
+  </aside>
+
+  <main class="canvas-wrap" id="canvasWrap">
+    <div class="canvas-tools">
+      <button class="viewbtn active" type="button" onclick="setView('desktop',this)">Desktop</button>
+      <button class="viewbtn" type="button" onclick="setView('tablet',this)">Tablet</button>
+      <button class="viewbtn" type="button" onclick="setView('mobile',this)">Mobile</button>
+    </div>
+
+<div class="canvas mobile" id="canvas"><div class="page" id="page">
+<section class="block" data-type="hero"><div class="nav editable-block"><a class="brand-page editable" data-edit="brand">YOUR BRAND</a><div class="lang"><button class="active" type="button">বাংলা</button><button type="button" class="">English</button></div></div><div class="hero"><div class="hero-grid"><div><span class="badge editable selected-edit" data-edit="badge">++++++++++++++++</span><h1 class="editable" data-edit="headline">আপনার ডিজিটাল পণ্যের জন্য একটি <span class="grad">Professional Sales Page</span></h1><p class="lead editable" data-edit="lead">কোডিংয়ের ঝামেলা ছাড়াই আপনার পণ্যকে সুন্দরভাবে উপস্থাপন করুন এবং কাস্টমারকে দ্রুত সিদ্ধান্ত নিতে সাহায্য করুন।</p><div class="ctas"><a class="btn btn-primary editable" data-edit="cta1" href="#buy">এখনই কিনুন</a><a class="btn btn-secondary editable" data-edit="cta2" href="#features">বিস্তারিত দেখুন</a></div><div class="trust"><span>✓ Mobile Responsive</span><span>✓ Easy to Customize</span><span>✓ Sales Ready</span></div></div><div class="hero-art"><div class="device"><div class="device-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="screen"><div class="screen-title"></div><div class="screen-line"></div><div class="screen-line" style="width:55%"></div><div class="screen-card"></div></div></div><div class="phone"><div class="screen"><div class="screen-title" style="width:65%"></div><div class="screen-card"></div><div class="screen-line"></div></div></div></div></div></div></section>
+
+<section class="block section" id="features" data-type="product"><div class="product"><div><h2 class="editable" data-edit="productTitle">Professional Digital Product Template</h2><p class="muted editable" data-edit="productDesc">নিজের নাম, ছবি, লেখা, দাম ও লিংক বসিয়ে ব্যবহার করুন। এটি একটি sales-ready layout হিসেবে তৈরি করা হয়েছে।</p><div class="checks"><div class="check">✓ Professional &amp; Modern Design</div><div class="check">✓ Mobile + Desktop Responsive</div><div class="check">✓ Easy Customization</div><div class="check">✓ Buy, Download &amp; WhatsApp Link</div><div class="check">✓ Payment &amp; FAQ Section</div></div></div><aside class="price"><small>আজকের মূল্য</small><div class="price-now">৳ <span class="editable" data-edit="price">499</span></div><div class="old">৳ <span class="editable" data-edit="oldPrice">999</span></div><div class="offer">🔥 Limited Time Offer</div></aside></div></section>
+
+<section class="block section" id="buy" data-type="links"><h2 class="section-title">গুরুত্বপূর্ণ <span class="grad">লিংকসমূহ</span></h2><div class="links"><div class="link-card buy"><div class="icon">🛒</div><h3>Buy Now</h3><p>পেমেন্ট / অর্ডার করতে</p><a class="link-btn editable" data-edit="buyBtn" href="#">এখনই অর্ডার করুন</a></div><div class="link-card download"><div class="icon">↓</div><h3>Download</h3><p>পেমেন্টের পর ফাইল নিন</p><a class="link-btn editable" data-edit="downloadBtn" href="#">Download</a></div><div class="link-card whatsapp"><div class="icon">◔</div><h3>WhatsApp</h3><p>যোগাযোগ / হেল্প সাপোর্ট</p><a class="link-btn editable" data-edit="waBtn" href="#">WhatsApp Support</a></div></div></section>
+
+<section class="block section payment" data-type="payment"><h2 class="section-title">পেমেন্ট করুন</h2><div class="pay-grid"><div class="pay"><strong>🪽 bKash</strong><div class="field editable" data-edit="bkash">01XXXXXXXXX</div></div><div class="pay"><strong>◉ Nagad</strong><div class="field editable" data-edit="nagad">01XXXXXXXXX</div></div><div class="pay"><strong>▣ Payment Reference</strong><div class="field editable" data-edit="reference">YOUR_REFERENCE</div></div></div><p style="text-align:center;margin-bottom:0">Payment করার পর WhatsApp/Support-এ Payment Reference পাঠান।</p></section>
+
+<section class="block section" data-type="countdown"><h2 class="section-title">অফার শেষ হবে</h2><div class="countdown" id="countdown"><div class="timebox"><b id="dd">02</b><small>দিন</small></div><div class="timebox"><b id="hh">12</b><small>ঘণ্টা</small></div><div class="timebox"><b id="mm">09</b><small>মিনিট</small></div><div class="timebox"><b id="ss">563</b><small>সেকেন্ড</small></div></div></section>
+
+<section class="block section" data-type="faq"><h2 class="section-title">❓ সাধারণ জিজ্ঞাসা</h2><div class="faq"><details open=""><summary>আমি কী পাব?</summary><p class="editable">একটি সম্পূর্ণ editable digital product sales page template পাবেন।</p></details><details><summary>Payment করার পর কীভাবে পাব?</summary><p class="editable">আপনার নির্ধারিত delivery process অনুযায়ী file বা download link দেওয়া হবে।</p></details><details><summary>নিজের দাম কি দিতে পারব?</summary><p class="editable">হ্যাঁ, Price field থেকে আপনার নিজের দাম বসাতে পারবেন।</p></details></div></section>
+<footer class="footer block" data-type="footer">© 2026 YOUR BRAND. All Rights Reserved.</footer>
+</div></div></main>
+
+  <aside class="sidebar rightbar" id="rightbar">
+    <div class="mobile-drawer-head"><button class="mobile-back" type="button" onclick="closeMobilePanels()">←</button><strong>Properties</strong></div>
+    <div id="properties"><div class="empty">কোনো element select করুন।<br>তারপর এখানে settings দেখা যাবে।</div></div>
+  </aside>
 </div>
+<input id="imageInput" type="file" accept="image/*" hidden>
+<input id="jsonInput" type="file" accept="application/json,.json" hidden>
+<div id="notice" class="notice"></div>
+<button class="preview-exit" type="button" onclick="exitPreview()">✕ Exit Preview</button>
+
 <script>
 const page=document.getElementById('page'),canvas=document.getElementById('canvas'),props=document.getElementById('properties');
 let selected=null,selectedEdit=null,history=[],future=[],dragged=null,editSnapshotTaken=false,currentLang='bn';
@@ -339,54 +424,6 @@ function moveSelected(direction){
   else selected.parentNode.insertBefore(selected,blocks[targetIndex].nextSibling);
   refreshDropzones();selectBlock(selected,selectedEdit);autoSaveSoon();toast('Section order updated');
 }
-function openPublish(){
-  const modal=document.getElementById('publishModal');
-  const name=document.getElementById('publishName');
-  const slug=document.getElementById('publishSlug');
-  const result=document.getElementById('publishResult');
-  if(!name.value) name.value=(page.querySelector('.brand-page')?.textContent||'My Digital Product').trim();
-  if(!slug.value) slug.value=makeSlug(name.value)||'my-product';
-  updatePublishPreview();
-  result.style.display='none';result.innerHTML='';
-  modal.style.display='flex';
-  setTimeout(()=>name.focus(),50);
-}
-function closePublish(){document.getElementById('publishModal').style.display='none'}
-function makeSlug(v){return String(v||'').toLowerCase().trim().replace(/[^a-z0-9\u0980-\u09ff\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,48)}
-function updatePublishPreview(){const s=makeSlug(document.getElementById('publishSlug').value)||'my-product';document.getElementById('publishPreviewUrl').textContent=location.origin+'/p/'+s}
-async function publishProject(){
-  const btn=document.getElementById('publishSubmit'),result=document.getElementById('publishResult');
-  const name=document.getElementById('publishName').value.trim()||'My Digital Product';
-  const slug=makeSlug(document.getElementById('publishSlug').value)||makeSlug(name)||'my-product';
-  const html=buildExportHTML();
-  btn.disabled=true;btn.textContent='⏳ Publishing...';result.style.display='none';
-  try{
-    const res=await fetch('/api/publish',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,slug,html})});
-    const raw=await res.text();
-    let data=null;
-    try{ data=raw?JSON.parse(raw):null; }catch(parseErr){
-      const ct=res.headers.get('content-type')||'';
-      const preview=raw.replace(/\s+/g,' ').slice(0,220);
-      throw new Error('Publish API returned non-JSON response ('+res.status+(ct?'; '+ct:'')+'). '+(preview||'Empty response'));
-    }
-    if(!res.ok||!data?.ok) throw new Error(data?.error||('Publish failed (HTTP '+res.status+')'));
-    const url=data.url||location.origin+'/p/'+slug;
-    result.style.display='block';result.innerHTML='✅ <b>Published Successfully!</b><br><a href="'+url+'" target="_blank" rel="noopener" style="display:block;margin-top:6px;color:#166534;word-break:break-all">'+url+'</a><button type="button" onclick="copyText('+JSON.stringify(url)+')" style="margin-top:8px;border:1px solid #bbf7d0;background:#fff;border-radius:8px;padding:7px 10px;font-weight:800;color:#166534">Copy URL</button>';
-    toast('Landing page published');
-  }catch(e){result.style.display='block';result.style.background='#fff1f2';result.style.color='#be123c';result.textContent='❌ '+(e.message||'Publish failed');toast('Publish failed')}
-  finally{btn.disabled=false;btn.textContent='🚀 Publish Now'}
-}
-function copyText(v){navigator.clipboard?.writeText(v).then(()=>toast('Live URL copied')).catch(()=>toast('URL: '+v))}
-function buildExportHTML(){
-  const clone=document.documentElement.cloneNode(true);
-  clone.querySelector('.appbar')?.remove();clone.querySelectorAll('.sidebar,.canvas-tools,.notice,#imageInput,#jsonInput,#publishModal,.mobile-bottom-nav,.preview-exit').forEach(x=>x.remove());
-  clone.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));clone.querySelectorAll('[draggable]').forEach(x=>x.removeAttribute('draggable'));clone.querySelectorAll('.dropzone').forEach(x=>x.remove());
-  clone.querySelectorAll('.editable').forEach(x=>x.removeAttribute('contenteditable'));clone.querySelectorAll('button').forEach(b=>{if(!b.closest('.lang'))b.remove()});
-  clone.querySelectorAll('.lang button').forEach(b=>{b.setAttribute('type','button');b.removeAttribute('onclick')});
-  clone.querySelectorAll('script').forEach(x=>x.remove());
-  return '<!doctype html>\n'+clone.outerHTML;
-}
-document.getElementById('publishSlug')?.addEventListener('input',updatePublishPreview);document.getElementById('publishName')?.addEventListener('input',e=>{const slug=document.getElementById('publishSlug');if(!slug.dataset.edited)slug.value=makeSlug(e.target.value);updatePublishPreview()});document.getElementById('publishSlug')?.addEventListener('input',e=>{e.target.dataset.edited='1';updatePublishPreview()});
 function collectState(){return {html:page.innerHTML,style:document.documentElement.getAttribute('style')||'',canvasUiColor:document.getElementById('canvasWrap')?.style.background||'',lang:currentLang,version:'2.2.2-mobile'}}
 function saveProject(){localStorage.setItem('dp-builder-project',JSON.stringify(collectState()));const st=document.getElementById('saveStatus');st.style.display='inline';st.textContent='Saved';toast('Project saved')}
 function autoSaveSoon(){clearTimeout(window.__autosave);window.__autosave=setTimeout(()=>localStorage.setItem('dp-builder-project',JSON.stringify(collectState())),350)}
@@ -395,7 +432,67 @@ function exportJSON(){const blob=new Blob([JSON.stringify(collectState(),null,2)
 function importJSON(){const input=document.getElementById('jsonInput');input.value='';input.onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const st=JSON.parse(r.result);if(!st.html)throw Error('html');snapshot();page.innerHTML=st.html;document.documentElement.setAttribute('style',st.style||'');currentLang=st.lang||'bn';refreshDropzones();setLang(currentLang,true);toast('Project imported')}catch(x){toast('Invalid project file')}};r.readAsText(f)};input.click()}
 document.addEventListener('input',e=>{if(e.target.id==='canvasUiColor'){const cw=document.getElementById('canvasWrap');if(cw){const c=e.target.value;cw.style.background='linear-gradient(135deg,'+c+',#f9fafc)';autoSaveSoon();}}});
 function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-function downloadHTML(){const html=buildExportHTML();downloadBlob(new Blob([html],{type:'text/html'}),'digital-product-landing-page.html');toast('Clean HTML exported')}
+
+const PUBLISH_API=(localStorage.getItem('dp-publish-api')||window.location.origin).replace(/\/$/,'');
+function openPublishPanel(){document.getElementById('publishPanel').classList.add('open');document.getElementById('publishSlug').focus();}
+function closePublishPanel(){document.getElementById('publishPanel').classList.remove('open');}
+function buildPublishHTML(){
+  const source=document.getElementById('page');
+  if(!source)throw new Error('Canvas page not found');
+  const body=source.cloneNode(true);
+  body.querySelectorAll('.selected,.selected-edit').forEach(x=>x.classList.remove('selected','selected-edit')); body.querySelectorAll('.dropzone').forEach(x=>x.remove());
+  body.querySelectorAll('[contenteditable]').forEach(x=>x.removeAttribute('contenteditable'));
+  body.querySelectorAll('[draggable]').forEach(x=>x.removeAttribute('draggable'));
+  body.querySelectorAll('.block').forEach(x=>x.classList.remove('block'));
+  body.querySelectorAll('button').forEach(b=>{if(!b.closest('.lang'))b.remove();});
+  body.querySelectorAll('.mobile-only,.mobile-overlay,#publishLayer').forEach(x=>x.remove());
+  body.querySelectorAll('script').forEach(x=>x.remove());
+  const langButtons=body.querySelectorAll('.lang button');
+  langButtons.forEach((b,i)=>{b.type='button';b.removeAttribute('onclick');b.addEventListener?.('click',()=>{}); if(i===0)b.classList.add('active');});
+  const css=document.querySelector('style')?.textContent||'';
+  const countdown=`<script>(function(){var end=Date.now()+((2*86400+12*3600+30*60)*1000);setInterval(function(){var x=Math.max(0,end-Date.now()),d=Math.floor(x/86400000);x%=86400000;var h=Math.floor(x/3600000);x%=3600000;var m=Math.floor(x/60000),s=Math.floor(x/1000)%60;[['dd',d],['hh',h],['mm',m],['ss',s]].forEach(function(a){var e=document.getElementById(a[0]);if(e)e.textContent=String(a[1]).padStart(2,'0')});},1000)})()<\/script>`;
+  return '<!doctype html>\n<html lang="'+(document.documentElement.lang||'bn')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Digital Product Landing Page"><title>Digital Product</title><style>'+css+'</style></head><body><main>'+body.innerHTML+'</main>'+countdown+'</body></html>';
+}
+let publishingNow=false;
+async function publishCurrentPage(){
+  const status=document.getElementById('publishStatus'), slugEl=document.getElementById('publishSlug'), go=document.querySelector('#publishPanel .publish-go');
+  if(publishingNow)return;
+  const slug=(slugEl.value||'').trim().toLowerCase();
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)){status.textContent='Slug শুধু a-z, 0-9 এবং hyphen দিয়ে দিন।';return;}
+  publishingNow=true;
+  if(go){go.disabled=true;go.textContent='Processing…';}
+  status.textContent='1/3 Clean HTML তৈরি হচ্ছে…';
+  try{
+    const html=buildPublishHTML();
+    status.textContent='2/3 Cloudflare-এ Publish করা হচ্ছে…';
+    const res=await fetch(PUBLISH_API+'/api/publish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug,html})});
+    const raw=await res.text();
+    let data;try{data=JSON.parse(raw)}catch(_){throw new Error('Server returned invalid JSON (HTTP '+res.status+')')}
+    if(!res.ok||!data.ok)throw new Error(data.error||('Publish failed (HTTP '+res.status+')'));
+    const live=PUBLISH_API+'/p/'+encodeURIComponent(slug);
+    localStorage.setItem('dp-last-published-slug',slug);
+    status.innerHTML='3/3 Published ✓ <a href="'+live+'" target="_blank" rel="noopener">Live Page খুলুন</a>';
+    toast('Publish সফল হয়েছে');
+  }catch(e){status.textContent='Publish failed: '+(e?.message||e);toast('Publish failed');}
+  finally{publishingNow=false;if(go){go.disabled=false;go.textContent='Publish';}}
+}
+
+function openLivePage(){
+  const slug=(localStorage.getItem('dp-last-published-slug')||'').trim();
+  if(!slug)return toast('এখনও কোনো Live page publish করা হয়নি');
+  const live=PUBLISH_API+'/p/'+encodeURIComponent(slug);
+  window.open(live,'_blank','noopener');
+}
+
+function downloadHTML(){
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelector('.appbar')?.remove();clone.querySelectorAll('.sidebar,.canvas-tools,.notice,#imageInput,#jsonInput').forEach(x=>x.remove());
+  clone.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));clone.querySelectorAll('[draggable]').forEach(x=>x.removeAttribute('draggable'));clone.querySelectorAll('.dropzone').forEach(x=>x.remove());
+  clone.querySelectorAll('.editable').forEach(x=>x.removeAttribute('contenteditable'));clone.querySelectorAll('button').forEach(b=>{if(!b.closest('.lang'))b.remove()});
+  clone.querySelectorAll('.lang button').forEach(b=>b.setAttribute('type','button'));
+  clone.querySelectorAll('.lang button').forEach(b=>{b.removeAttribute('onclick')});
+  const html='<!doctype html>\n'+clone.outerHTML;downloadBlob(new Blob([html],{type:'text/html'}),'digital-product-landing-page.html');toast('Clean HTML exported')
+}
 function applyTemplate(kind){
   snapshot();
   const h=page.querySelector('.hero h1'),lead=page.querySelector('.hero .lead'),badge=page.querySelector('.hero .badge'),pt=page.querySelector('.product h2');
@@ -424,4 +521,5 @@ window.addEventListener('orientationchange',()=>setTimeout(()=>{if(window.innerW
 // On touch devices, native HTML5 drag is unreliable; mobile uses explicit ↑/↓ section controls for dependable reordering.
 if('ontouchstart' in window){page.querySelectorAll('.block').forEach(b=>b.setAttribute('draggable','false'));}
 
-</script></body></html>
+</script>
+</body></html>
