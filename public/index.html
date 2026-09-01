@@ -1,12 +1,427 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cloudfloor Store — Landing Page Builder 2.1</title><style>
-*{box-sizing:border-box}body{margin:0;background:#0c0b14;color:#fff;font-family:system-ui,"Noto Sans Bengali",sans-serif}.top{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #ffffff18;background:#100d1c;position:sticky;top:0;z-index:20}.brand{font-weight:800}.edit{border:1px solid #a855f7;background:#1c1230;color:#fff;border-radius:99px;padding:10px 15px}.workspace{height:calc(100vh - 72px);display:flex;position:relative;overflow:hidden}.panel{position:absolute;top:0;bottom:0;width:min(330px,86vw);background:#12111b;border:1px solid #ffffff14;z-index:10;padding:18px;overflow:auto;transition:transform .25s ease;box-shadow:0 12px 50px #0008}.left{left:0;transform:translateX(-100%)}.right{right:0;transform:translateX(100%)}.panel.open{transform:translateX(0)}.close{float:right;border:0;background:none;color:#fff;font-size:26px}.panel h3{color:#c084fc}.item{padding:14px;border-radius:12px;background:#1b1926;margin:8px 0}.preview-area{flex:1;display:flex;justify-content:center;align-items:center;padding:20px;overflow:auto}.phone{width:min(390px,92vw);height:calc(min(780px,88vh));min-height:620px;background:#6b21a8;border:3px solid #a855f7;border-radius:32px;overflow:auto;box-shadow:0 0 40px #7e22ce66}.page{padding:32px 20px;text-align:center}.page h1{font-size:32px;line-height:1.25}.page p{line-height:1.7}.btn{display:block;padding:16px;background:#ffd700;color:#111;border-radius:14px;font-weight:800;margin:20px 0;text-decoration:none}.hint{position:absolute;bottom:14px;opacity:.6;font-size:12px;text-align:center;left:0;right:0}.scrim{position:absolute;inset:0;background:#0008;z-index:5;display:none}.scrim.show{display:block}@media(min-width:900px){.left,.right{position:relative;transform:none;display:block;z-index:1}.panel{height:100%;width:280px}.scrim{display:none!important}}
-</style></head><body><header class="top"><div class="brand">☁️ Cloudfloor Store</div><button class="edit" id="edit">EDIT MODE ●</button><button class="edit" id="share">Preview / Share</button></header><div class="workspace"><div class="scrim" id="scrim"></div><aside class="panel left" id="left"><button class="close" data-close>×</button><h3>SECTIONS</h3><div class="item">⌂ হিরো সেকশন</div><div class="item">☆ ফিচার সেকশন</div><div class="item">✓ সুবিধা সেকশন</div><div class="item">🏷 প্রাইস সেকশন</div><div class="item">❝ টেস্টিমোনিয়াল</div><div class="item">? FAQ সেকশন</div><div class="item">➤ CTA সেকশন</div><div class="item">▣ ফুটার সেকশন</div><h3>QUICK ACTIONS</h3><div class="item">＋ Add Section</div><div class="item">▦ Templates</div><div class="item">🎨 Colors</div><div class="item">A Fonts</div></aside><section class="preview-area" id="previewArea"><div class="phone"><div class="page"><div>🔥 High-Converting Landing Page</div><h1>ভিজিটরকে ক্রেতায় পরিণত করার জন্য তৈরি করুন হাই-কনভার্টিং Professional Landing Page—আপনার প্রোডাক্ট বা সার্ভিসকে দিন প্রিমিয়াম উপস্থাপনা!</h1><p>আকর্ষণীয় ডিজাইন, শক্তিশালী কপি এবং স্মুথ ইউজার এক্সপেরিয়েন্স—সবকিছু একসাথে।</p><a class="btn">এখনই অর্ডার করুন</a><div class="item">🎯 হাই কনভার্টিং ডিজাইন</div><div class="item">⚡ দ্রুত ও রেসপন্সিভ</div><div class="item">🛡 বিশ্বাসযোগ্য ও প্রফেশনাল</div></div></div></section><aside class="panel right" id="right"><button class="close" data-close>×</button><h3>STYLE</h3><div class="item">Theme Templates<br>🟣 🔵 🟢 🟡</div><div class="item">Background Color<br><input type="color" value="#6b21a8"></div><div class="item">Typography<br>Font Family • Size</div><div class="item">Text Color<br>Heading • Text • Accent</div><div class="item">Element Style<br>Border Radius • Padding</div><div class="item">💾 Save Changes</div></aside><div class="hint">মোবাইলে: বাম edge থেকে swipe → Sections • ডান edge থেকে swipe → Style • ফাঁকা জায়গায় tap → সব panel বন্ধ</div></div><script>
-const left=document.querySelector('#left'),right=document.querySelector('#right'),scrim=document.querySelector('#scrim'),area=document.querySelector('#previewArea');
-function closeAll(){left.classList.remove('open');right.classList.remove('open');scrim.classList.remove('show')}
-function open(p){closeAll();p.classList.add('open');scrim.classList.add('show')}
-scrim.onclick=closeAll;document.querySelectorAll('[data-close]').forEach(b=>b.onclick=closeAll);
-let sx=0;document.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{const x=e.changedTouches[0].clientX,d=x-sx;if(Math.abs(d)<70)return;if(sx<30&&d>0)open(left);if(sx>innerWidth-30&&d<0)open(right)},{passive:true});
-area.addEventListener('click',e=>{if(e.target===area)closeAll()});
-document.querySelector('#edit').onclick=()=>document.body.classList.toggle('editing');document.querySelector('#share').onclick=()=>alert('Publish API থেকে এই Page-এর স্থায়ী /p/{slug} Live Link তৈরি হবে।');
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Digital Product Landing Page Builder — editable sales page">
+<title>Digital Product Landing Page Builder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap');
+:root{--primary:#6d28d9;--primary2:#8b5cf6;--blue:#2563eb;--green:#16a34a;--ink:#111936;--muted:#687087;--bg:#f5f7fb;--canvas:#fff;--line:#e5e7ef;--shadow:0 12px 35px rgba(17,25,54,.10);--radius:18px;--page-width:1120px;--font:'Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--font);background:var(--bg);line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+/* editor shell */
+.appbar{height:58px;background:#10162b;color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px;position:sticky;top:0;z-index:100}.brand{font-weight:900;display:flex;gap:8px;align-items:center;white-space:nowrap}.brand-badge{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,#7c3aed,#2563eb)}.app-actions{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}.topbtn{border:1px solid #39415d;background:#1a213a;color:#fff;border-radius:9px;padding:7px 11px;font-weight:700;font-size:13px}.topbtn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);border-color:transparent}.status{font-size:11px;color:#aeb7cf;display:none}.workspace{display:grid;grid-template-columns:245px minmax(420px,1fr) 285px;min-height:calc(100vh - 58px)}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:13px;overflow:auto;position:sticky;top:58px;height:calc(100vh - 58px);z-index:30}.rightbar{border-left:1px solid var(--line);border-right:0}.panel-title{font-size:13px;text-transform:uppercase;letter-spacing:.7px;color:#778097;font-weight:900;margin:5px 3px 10px}.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tool{background:#f8f9fc;border:1px solid #e8eaf1;border-radius:12px;padding:11px 7px;text-align:center;font-weight:800;font-size:12px}.tool:hover{border-color:#c7b6f7;background:#faf7ff}.tool .ico{font-size:20px;display:block;margin-bottom:2px}.side-section{padding:12px 0;border-top:1px solid #edf0f5;margin-top:12px}.template{padding:10px;border:1px solid #e6e8ef;border-radius:12px;margin-bottom:8px;background:#fff}.template strong{font-size:13px}.template small{display:block;color:var(--muted);font-size:11px;margin:2px 0 7px}.template button{width:100%;border:0;background:#111936;color:#fff;border-radius:8px;padding:7px;font-weight:800;font-size:12px}.help{font-size:11px;color:#788096;line-height:1.6}
+.canvas-wrap{padding:18px;overflow:auto;background:linear-gradient(135deg,#eef1f8,#f9fafc)}.canvas-tools{display:flex;justify-content:center;align-items:center;gap:7px;margin-bottom:13px;position:sticky;top:0;z-index:20}.viewbtn{border:1px solid #d9deea;background:#fff;border-radius:9px;padding:7px 12px;font-size:12px;font-weight:800}.viewbtn.active{background:#111936;color:#fff;border-color:#111936}.canvas{width:var(--page-width);max-width:100%;margin:0 auto;background:#fff;box-shadow:0 18px 50px rgba(17,25,54,.13);min-height:700px;transition:width .2s}.canvas.mobile{width:390px}.canvas.tablet{width:768px}
+/* page */
+.page{background:linear-gradient(135deg,#f7f1ff,#fff 48%,#eef5ff);min-height:100%;overflow:hidden}.nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#ffffffee;border-bottom:1px solid #eee8ff}.brand-page{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px}.logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;color:#fff}.lang{display:flex;border:1px solid #ddd5ee;border-radius:10px;overflow:hidden}.lang button{border:0;background:#fff;padding:7px 11px;font-weight:800;font-size:12px}.lang button.active{background:var(--primary);color:#fff}.hero{padding:48px 6% 30px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:30px;align-items:center}.badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;font-weight:800;font-size:13px}.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.08;letter-spacing:-1.4px;margin:17px 0 14px}.grad{background:linear-gradient(90deg,var(--primary),var(--blue),#db2777);-webkit-background-clip:text;color:transparent}.lead{font-size:18px;color:var(--muted);max-width:650px}.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 19px;border-radius:12px;font-weight:900;border:1px solid transparent}.btn-primary{background:linear-gradient(135deg,var(--primary),var(--blue));color:#fff}.btn-secondary{background:#fff;border-color:#ddd6ed}.trust{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.trust span{font-size:11px;background:#ffffffc9;border:1px solid #eee7ff;padding:6px 9px;border-radius:999px;font-weight:800}.hero-art{position:relative;min-height:320px}.device{position:absolute;right:3%;top:18px;width:78%;height:255px;border:7px solid #111936;border-radius:19px;background:#fff;box-shadow:0 22px 45px #26325a33;transform:rotate(-2deg);overflow:hidden}.device-top{height:28px;background:#f3f4f8;border-bottom:1px solid #ddd;padding:8px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#c4c7d1;margin-right:4px}.screen{padding:18px;background:linear-gradient(135deg,#f7f1ff,#edf5ff);height:100%}.screen-title{width:55%;height:14px;border-radius:8px;background:var(--primary);margin-bottom:13px}.screen-line{width:72%;height:8px;border-radius:6px;background:#d7dbe7;margin:8px 0}.screen-card{width:42%;height:100px;border-radius:12px;background:linear-gradient(135deg,var(--primary2),var(--blue));margin-top:15px}.phone{position:absolute;left:4%;bottom:4px;width:105px;height:195px;border:7px solid #111936;border-radius:21px;background:#fff;box-shadow:0 16px 35px #26325a33;overflow:hidden}.phone .screen{padding:11px}.phone .screen-card{width:100%;height:65px}.section{padding:30px 6%}.product{background:#ffffffd9;border:1px solid #e6ddf7;border-radius:22px;padding:24px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;box-shadow:var(--shadow)}.product h2{margin:0 0 7px;font-size:29px}.muted{color:var(--muted)}.checks{display:grid;gap:8px;margin-top:14px}.check{display:flex;gap:8px;align-items:flex-start;font-weight:700}.check i{font-style:normal;color:#fff;background:linear-gradient(135deg,var(--primary),var(--blue));width:21px;height:21px;border-radius:50%;display:grid;place-items:center;font-size:12px;flex:0 0 21px}.price{background:linear-gradient(145deg,#faf5ff,#f3e8ff);border:1px solid #e5d4ff;border-radius:18px;padding:20px}.price-now{font-size:45px;font-weight:950;margin:6px 0}.old{text-decoration:line-through;color:#9296a5}.offer{margin-top:12px;padding:9px;border-radius:10px;background:#fff;color:var(--primary);font-weight:900;text-align:center}.section-title{text-align:center;margin:0 0 17px;font-size:26px}.links{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.link-card{background:#fff;border:1px solid #e8e1f4;border-radius:17px;padding:18px;text-align:center;box-shadow:0 10px 28px #4c1d9510}.icon{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;color:#fff;font-size:21px}.buy .icon,.buy .link-btn{background:linear-gradient(135deg,var(--primary),var(--primary2))}.download .icon,.download .link-btn{background:linear-gradient(135deg,var(--blue),#06b6d4)}.whatsapp .icon,.whatsapp .link-btn{background:linear-gradient(135deg,#16a34a,#22c55e)}.link-card h3{margin:3px 0;font-size:19px}.link-card p{margin:0 0 11px;color:var(--muted);font-size:13px}.link-btn{display:flex;justify-content:center;padding:10px;border-radius:9px;color:#fff;font-weight:900}.payment{background:linear-gradient(135deg,#fff9ec,#fff4d8);border:1px solid #f3dfaa;border-radius:18px}.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pay{background:#ffffffaa;border:1px solid #eadfbf;border-radius:12px;padding:13px}.pay strong{display:block;margin-bottom:5px;font-size:13px}.field{padding:8px 9px;border:1px solid #ded7c7;background:#fff;border-radius:8px;color:#777}.faq{display:grid;gap:8px}.faq details{background:#fff;border:1px solid #e5def1;border-radius:12px;padding:12px 14px}.faq summary{cursor:pointer;font-weight:800}.countdown{display:flex;justify-content:center;gap:8px;margin:14px 0}.timebox{background:#111936;color:#fff;border-radius:10px;padding:8px 11px;min-width:55px;text-align:center}.timebox b{font-size:20px;display:block}.timebox small{font-size:9px;color:#b8c0d5}.footer{padding:22px;text-align:center;background:linear-gradient(135deg,#312e81,#5b21b6);color:#fff}.editable{outline:0;border-radius:5px}.selected{outline:2px solid #7c3aed;outline-offset:3px;position:relative}.editable.selected-edit{outline:2px solid #2563eb!important;outline-offset:2px;box-shadow:0 0 0 2px rgba(37,99,235,.12)}.block{position:relative}.block.selected:after{content:'Selected';position:absolute;top:5px;right:7px;background:#7c3aed;color:#fff;padding:2px 6px;border-radius:5px;font:700 9px system-ui;z-index:4}.dropzone{height:6px;margin:3px 0}.dropzone.over{background:#8b5cf6;border-radius:5px}
+/* properties */
+.prop{padding:13px}.prop h3{margin:3px 0 12px;font-size:15px}.prop label{display:block;font-size:11px;font-weight:800;color:#626b82;margin:10px 0 4px}.prop input,.prop select,.prop textarea{width:100%;border:1px solid #dce0e9;border-radius:8px;padding:8px;background:#fff;color:#17203c}.prop textarea{min-height:70px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mini{border:1px solid #dce0e9;background:#fff;border-radius:8px;padding:7px;font-weight:800;font-size:11px}.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.empty{color:#8b93a7;text-align:center;font-size:12px;padding:30px 10px}.layer{display:flex;align-items:center;gap:7px;padding:8px;border:1px solid #e7e9ef;border-radius:9px;margin-bottom:6px;background:#fff;font-size:12px}.layer button{margin-left:auto;border:0;background:none}.notice{position:fixed;bottom:16px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;background:#111936;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:800;z-index:999;transition:.2s}.notice.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:1050px){.workspace{grid-template-columns:210px minmax(400px,1fr)}.rightbar{position:fixed;right:0;top:58px;height:calc(100vh - 58px);width:285px;transform:translateX(100%);transition:.2s;box-shadow:-10px 0 30px #0001}.rightbar.open{transform:none}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:260px}.product{grid-template-columns:1fr}}
+/* V2.1 stability + editor polish */
+.tool,.topbtn,.viewbtn,.mini,.template button,.lang button{touch-action:manipulation}
+.editable[contenteditable="true"]{cursor:text}
+.editable[contenteditable="true"]:focus{outline:2px solid #8b5cf6;outline-offset:3px;background:#ffffffcc}
+.lang button{min-width:72px}
+#properties{min-height:100%}
+@media(max-width:700px){.workspace{display:block}.sidebar{position:fixed;left:0;top:58px;width:230px;height:calc(100vh - 58px);transform:translateX(-100%);transition:.2s;box-shadow:10px 0 30px #0001}.sidebar.open{transform:none}.canvas-wrap{padding:10px 6px}.app-actions .status{display:none}.topbtn{padding:6px 8px;font-size:11px}.hero{padding:30px 5% 20px}.hero h1{font-size:31px}.lead{font-size:15px}.ctas .btn{width:100%}.links,.pay-grid{grid-template-columns:1fr}.section{padding:22px 5%}.product{padding:17px}.hero-art{min-height:220px}.device{height:180px}.phone{width:75px;height:140px;border-width:5px}}
+
+/* ========================= MOBILE-FIRST EDITOR V2.2 ========================= */
+.mobile-only{display:none}
+.mobile-overlay{display:none}
+.mobile-bottom-nav{display:none}
+@media (max-width:900px){
+  :root{--mobile-nav-h:64px;--mobile-top-h:56px}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{padding-bottom:var(--mobile-nav-h);-webkit-text-size-adjust:100%}
+  .appbar{height:var(--mobile-top-h);padding:0 8px;gap:5px;position:fixed;left:0;right:0;top:0;width:100%;z-index:300}
+  .brand{font-size:12px;min-width:0;gap:5px}
+  .brand-badge{width:28px;height:28px;border-radius:8px;font-size:12px;flex:0 0 28px}
+  .appbar>.topbtn{padding:6px 8px;font-size:11px;border-radius:8px}
+  .appbar>.topbtn:nth-of-type(1),.appbar>.topbtn:nth-of-type(2){display:inline-flex}
+  .app-actions{gap:4px;overflow-x:auto;flex:1;justify-content:flex-end;scrollbar-width:none}
+  .app-actions::-webkit-scrollbar{display:none}
+  .app-actions .topbtn{font-size:11px;padding:6px 8px;white-space:nowrap}
+  .app-actions .topbtn:nth-child(4){display:none}
+  .workspace{display:block;min-height:calc(100vh - var(--mobile-top-h));margin-top:var(--mobile-top-h)}
+  .sidebar{position:fixed;top:var(--mobile-top-h);bottom:0;height:calc(100dvh - var(--mobile-top-h));width:min(74vw,300px);z-index:250;padding:10px 10px 88px;overflow-y:auto;box-shadow:0 18px 60px rgba(0,0,0,.22);transition:transform .22s ease;overscroll-behavior:contain}
+  #leftbar{left:0!important;right:auto!important;transform:translate3d(-110%,0,0)!important;border-right:1px solid var(--line);visibility:hidden;pointer-events:none}
+  #leftbar.open{transform:translate3d(0,0,0)!important;visibility:visible;pointer-events:auto}
+  #rightbar{right:0!important;left:auto!important;transform:translate3d(110%,0,0)!important;border-left:1px solid var(--line);visibility:hidden;pointer-events:none}
+  #rightbar.open{transform:translate3d(0,0,0)!important;visibility:visible;pointer-events:auto}
+  .rightbar .prop{padding-bottom:90px}.mobile-drawer-head{position:sticky;top:-10px;z-index:5;display:flex;align-items:center;gap:10px;margin:-10px -10px 12px;padding:10px;background:rgba(255,255,255,.97);border-bottom:1px solid #e7e9ef;box-shadow:0 3px 12px rgba(17,25,54,.06)}.mobile-drawer-head strong{font-size:14px;color:#17203c}.mobile-back{border:1px solid #dce1eb;background:#fff;color:#17203c;border-radius:9px;padding:8px 10px;font-weight:900;min-height:38px;touch-action:manipulation}.mobile-back{position:relative;z-index:20;pointer-events:auto}.mobile-back:active{transform:scale(.98)}
+  .mobile-overlay{position:fixed;inset:0;background:rgba(9,13,29,.45);z-index:240;backdrop-filter:blur(2px)}
+  .mobile-overlay.show{display:block}
+  .canvas-wrap{padding:8px 6px 18px;overflow-x:hidden;min-height:calc(100vh - var(--mobile-top-h))}
+  .canvas-tools{margin:0 -1px 9px;justify-content:flex-start;overflow-x:auto;padding:2px 2px 7px;scrollbar-width:none;position:sticky;top:0;z-index:40}
+  .canvas-tools::-webkit-scrollbar{display:none}
+  .viewbtn{min-height:38px;padding:8px 12px;font-size:12px;white-space:nowrap;flex:0 0 auto}
+  .canvas{width:100%!important;max-width:100%;min-height:500px;border-radius:12px;box-shadow:0 10px 30px rgba(17,25,54,.12)}
+  .canvas.mobile,.canvas.tablet{width:100%!important}
+  .page{width:100%;min-height:100%;overflow:hidden}
+  .page .nav{padding:11px 13px;min-height:54px}
+  .brand-page{font-size:16px}
+  .logo{width:31px;height:31px}
+  .lang button{padding:7px 9px;font-size:11px;min-height:34px}
+  .hero{padding:27px 17px 22px}
+  .hero-grid{grid-template-columns:1fr;gap:17px}
+  .hero h1{font-size:clamp(29px,8.5vw,42px);line-height:1.13;letter-spacing:-.7px}
+  .lead{font-size:15px;line-height:1.7}
+  .ctas{display:grid;grid-template-columns:1fr;gap:9px}
+  .ctas .btn{width:100%;min-height:48px}
+  .trust{gap:6px}
+  .trust span{font-size:10px;padding:6px 8px}
+  .hero-art{min-height:215px}
+  .device{width:78%;height:170px;right:2%;top:7px;border-width:5px}
+  .device-top{height:22px;padding:6px}
+  .screen{padding:11px}
+  .screen-title{height:10px;margin-bottom:10px}
+  .screen-line{height:6px;margin:6px 0}
+  .screen-card{height:62px;margin-top:10px}
+  .phone{width:72px;height:132px;left:2%;bottom:0;border-width:5px;border-radius:17px}
+  .phone .screen{padding:7px}.phone .screen-card{height:43px}
+  .section{padding:19px 13px}
+  .product{grid-template-columns:1fr;padding:17px;border-radius:16px;gap:15px}
+  .product h2{font-size:23px}
+  .product p{font-size:14px}
+  .price-now{font-size:38px}
+  .links,.pay-grid{grid-template-columns:1fr}
+  .link-card{padding:16px}
+  .section-title{font-size:22px}
+  .payment{padding:17px!important}
+  .countdown{gap:5px;flex-wrap:wrap}
+  .timebox{min-width:58px;padding:7px 8px}
+  .faq details{padding:11px 12px}
+  .footer{padding:18px 12px;font-size:12px}
+  .block.selected{outline-width:2px;outline-offset:1px}.editable.selected-edit{outline-width:2px!important;outline-offset:2px}
+  .block.selected:after{top:4px;right:4px;font-size:8px}
+  .dropzone{height:10px;margin:1px 0}
+  .dropzone.over{height:18px}
+  .mobile-bottom-nav{position:fixed;left:0;right:0;bottom:0;height:var(--mobile-nav-h);z-index:220;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:7px 6px calc(7px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #dde2ec;box-shadow:0 -8px 28px rgba(17,25,54,.12);backdrop-filter:blur(16px)}
+  .mobile-bottom-nav button{border:0;background:transparent;color:#3b4358;border-radius:11px;font-size:10px;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;touch-action:manipulation}
+  .mobile-bottom-nav button .micon{font-size:18px;line-height:1}
+  .mobile-bottom-nav button.active{background:#f0eaff;color:var(--primary)}
+  .mobile-bottom-nav button.add{background:linear-gradient(135deg,var(--primary),var(--blue));color:#fff}
+  .mobile-only{display:block}
+  .mobile-sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+  .mobile-close{width:100%;border:1px solid #dfe3ed;background:#fff;border-radius:10px;padding:10px;font-weight:900}
+  .mobile-reorder{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .mobile-reorder button{border:1px solid #dfe3ed;background:#fff;border-radius:10px;padding:10px;font-weight:900}
+  .preview-mode .appbar,.preview-mode .sidebar,.preview-mode .canvas-tools,.preview-mode .mobile-bottom-nav{display:none!important}
+  .preview-mode{padding:0}
+  .preview-mode .workspace{min-height:100vh}
+  .preview-mode .canvas-wrap{padding:0;background:#fff}
+  .preview-mode .canvas{box-shadow:none;border-radius:0;min-height:100vh}
+  .preview-mode .page{min-height:100vh}
+  .preview-exit{display:none;position:fixed;top:10px;right:10px;z-index:400;border:0;background:#111936;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900;box-shadow:0 8px 25px rgba(0,0,0,.22)}
+  .preview-mode .preview-exit{display:block}
+  .tool,.template button,.mini,.topbtn,.viewbtn,.lang button,.link-btn{touch-action:manipulation}
+  .prop label{margin-top:10px}
+  .prop textarea,.prop input,.prop select{min-height:42px;font-size:14px}
+  .prop .mini{min-height:42px}
+}
+@media(max-width:420px){
+  .appbar>.topbtn{font-size:10px;padding:6px 7px}
+  .app-actions .topbtn{font-size:10px;padding:6px 7px}
+  .brand{max-width:118px;overflow:hidden;text-overflow:ellipsis}
+  .hero h1{font-size:28px}
+  .hero-art{min-height:190px}
+  .device{height:150px}
+  .phone{width:66px;height:121px}
+  .timebox{min-width:54px}
+}
+@media(min-width:901px){.preview-exit{display:none}}
+</style>
+</head>
+<body>
+<header class="appbar"><div class="brand"><span class="brand-badge">◆</span><span>DP Landing Builder</span></div><button class="topbtn" onclick="toggleLeft()">☰ Tools</button><button class="topbtn" onclick="toggleRight()">⚙ Properties</button><div class="app-actions"><button class="topbtn" onclick="undo()">↶</button><button class="topbtn" onclick="redo()">↷</button><button class="topbtn" onclick="saveProject()">💾 Save</button><button class="topbtn" onclick="loadProject()">📂 Load</button><button class="topbtn primary" onclick="openPublish()">🚀 Publish</button><button class="topbtn" onclick="downloadHTML()">⬇ Export HTML</button></div></header>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobilePanels()"></div>
+<button class="preview-exit" id="previewExit" onclick="exitPreview()">✕ Exit Preview</button>
+<nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile editor navigation">
+  <button onclick="openMobilePanel('tools')"><span class="micon">☰</span><span>Tools</span></button>
+  <button class="active" onclick="showCanvas()"><span class="micon">▣</span><span>Canvas</span></button>
+  <button class="add" onclick="openAddMenu()"><span class="micon">＋</span><span>Add</span></button>
+  <button onclick="openMobilePanel('props')"><span class="micon">⚙</span><span>Properties</span></button>
+  <button onclick="enterPreview()"><span class="micon">👁</span><span>Preview</span></button>
+</nav>
+<div class="workspace">
+<aside class="sidebar" id="leftbar"><div class="mobile-drawer-head"><button type="button" class="mobile-back" onclick="closeMobilePanels()">← <span>ফিরে যান</span></button><strong>Tools</strong></div>
+<div class="panel-title">Add Elements</div><div class="tool-grid">
+<button class="tool" onclick="addBlock('text')"><span class="ico">T</span>Text</button><button class="tool" onclick="addBlock('image')"><span class="ico">🖼</span>Image</button><button class="tool" onclick="addBlock('button')"><span class="ico">▣</span>Button</button><button class="tool" onclick="addBlock('offer')"><span class="ico">🔥</span>Offer</button><button class="tool" onclick="addBlock('countdown')"><span class="ico">⏱</span>Timer</button><button class="tool" onclick="addBlock('faq')"><span class="ico">?</span>FAQ</button><button class="tool" onclick="addBlock('payment')"><span class="ico">৳</span>Payment</button><button class="tool" onclick="addBlock('spacer')"><span class="ico">↕</span>Spacer</button></div>
+<div class="side-section"><div class="panel-title">Templates</div><div class="template"><strong>Digital Product</strong><small>Sales + offer + payment</small><button onclick="applyTemplate('product')">Use Template</button></div><div class="template"><strong>Course</strong><small>Course sales layout</small><button onclick="applyTemplate('course')">Use Template</button></div><div class="template"><strong>Minimal</strong><small>Clean product page</small><button onclick="applyTemplate('minimal')">Use Template</button></div></div>
+<div class="side-section"><div class="panel-title">Project</div><button class="mini" style="width:100%;margin-bottom:7px" onclick="exportJSON()">Export Project JSON</button><button class="mini" style="width:100%" onclick="importJSON()">Import Project JSON</button></div>
+<div class="side-section"><div class="panel-title">Tips</div><div class="help">• Canvas-এর যেকোনো section-এ ক্লিক করুন।<br>• Right Properties থেকে edit করুন।<br>• Section ধরে drag করে order বদলান।<br>• Export করলে editor ছাড়া clean HTML পাওয়া যাবে।</div></div>
+</aside>
+<main class="canvas-wrap" id="canvasWrap"><div class="canvas-tools"><button class="viewbtn active" data-view="desktop" onclick="setView('desktop',this)">🖥 Desktop</button><button class="viewbtn" data-view="tablet" onclick="setView('tablet',this)">▣ Tablet</button><button class="viewbtn" data-view="mobile" onclick="setView('mobile',this)">📱 Mobile</button><label class="viewbtn" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">🎨 Canvas UI <input id="canvasUiColor" type="color" value="#eef1f8" title="Canvas interface color" style="width:28px;height:28px;padding:0;border:0;background:transparent"></label><span id="saveStatus" class="status">Saved</span></div>
+<div class="canvas" id="canvas"><div class="page" id="page">
+<section class="block" data-type="hero" draggable="true"><div class="nav editable-block"><a class="brand-page editable" data-edit="brand">YOUR BRAND</a><div class="lang"><button class="active" type="button" onclick="setLang('bn')">বাংলা</button><button type="button" onclick="setLang('en')">English</button></div></div><div class="hero"><div class="hero-grid"><div><span class="badge editable" data-edit="badge">✦ প্রফেশনাল Landing Page</span><h1 class="editable" data-edit="headline">আপনার ডিজিটাল পণ্যের জন্য একটি <span class="grad">Professional Sales Page</span></h1><p class="lead editable" data-edit="lead">কোডিংয়ের ঝামেলা ছাড়াই আপনার পণ্যকে সুন্দরভাবে উপস্থাপন করুন এবং কাস্টমারকে দ্রুত সিদ্ধান্ত নিতে সাহায্য করুন।</p><div class="ctas"><a class="btn btn-primary editable" data-edit="cta1" href="#buy">এখনই কিনুন</a><a class="btn btn-secondary editable" data-edit="cta2" href="#features">বিস্তারিত দেখুন</a></div><div class="trust"><span>✓ Mobile Responsive</span><span>✓ Easy to Customize</span><span>✓ Sales Ready</span></div></div><div class="hero-art"><div class="device"><div class="device-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="screen"><div class="screen-title"></div><div class="screen-line"></div><div class="screen-line" style="width:55%"></div><div class="screen-card"></div></div></div><div class="phone"><div class="screen"><div class="screen-title" style="width:65%"></div><div class="screen-card"></div><div class="screen-line"></div></div></div></div></div></div></section>
+<div class="dropzone"></div>
+<section class="block section" id="features" data-type="product" draggable="true"><div class="product"><div><h2 class="editable" data-edit="productTitle">Professional Digital Product Template</h2><p class="muted editable" data-edit="productDesc">নিজের নাম, ছবি, লেখা, দাম ও লিংক বসিয়ে ব্যবহার করুন। এটি একটি sales-ready layout হিসেবে তৈরি করা হয়েছে।</p><div class="checks"><div class="check">✓ Professional & Modern Design</div><div class="check">✓ Mobile + Desktop Responsive</div><div class="check">✓ Easy Customization</div><div class="check">✓ Buy, Download & WhatsApp Link</div><div class="check">✓ Payment & FAQ Section</div></div></div><aside class="price"><small>আজকের মূল্য</small><div class="price-now">৳ <span class="editable" data-edit="price">499</span></div><div class="old">৳ <span class="editable" data-edit="oldPrice">999</span></div><div class="offer">🔥 Limited Time Offer</div></aside></div></section>
+<div class="dropzone"></div>
+<section class="block section" id="buy" data-type="links" draggable="true"><h2 class="section-title">গুরুত্বপূর্ণ <span class="grad">লিংকসমূহ</span></h2><div class="links"><div class="link-card buy"><div class="icon">🛒</div><h3>Buy Now</h3><p>পেমেন্ট / অর্ডার করতে</p><a class="link-btn editable" data-edit="buyBtn" href="#">এখনই অর্ডার করুন</a></div><div class="link-card download"><div class="icon">↓</div><h3>Download</h3><p>পেমেন্টের পর ফাইল নিন</p><a class="link-btn editable" data-edit="downloadBtn" href="#">Download</a></div><div class="link-card whatsapp"><div class="icon">◔</div><h3>WhatsApp</h3><p>যোগাযোগ / হেল্প সাপোর্ট</p><a class="link-btn editable" data-edit="waBtn" href="#">WhatsApp Support</a></div></div></section>
+<div class="dropzone"></div>
+<section class="block section payment" data-type="payment" draggable="true"><h2 class="section-title">পেমেন্ট করুন</h2><div class="pay-grid"><div class="pay"><strong>🪽 bKash</strong><div class="field editable" data-edit="bkash">01XXXXXXXXX</div></div><div class="pay"><strong>◉ Nagad</strong><div class="field editable" data-edit="nagad">01XXXXXXXXX</div></div><div class="pay"><strong>▣ Payment Reference</strong><div class="field editable" data-edit="reference">YOUR_REFERENCE</div></div></div><p style="text-align:center;margin-bottom:0">Payment করার পর WhatsApp/Support-এ Payment Reference পাঠান।</p></section>
+<div class="dropzone"></div>
+<section class="block section" data-type="countdown" draggable="true"><h2 class="section-title">অফার শেষ হবে</h2><div class="countdown" id="countdown"><div class="timebox"><b id="dd">02</b><small>দিন</small></div><div class="timebox"><b id="hh">12</b><small>ঘণ্টা</small></div><div class="timebox"><b id="mm">30</b><small>মিনিট</small></div><div class="timebox"><b id="ss">00</b><small>সেকেন্ড</small></div></div></section>
+<div class="dropzone"></div>
+<section class="block section" data-type="faq" draggable="true"><h2 class="section-title">❓ সাধারণ জিজ্ঞাসা</h2><div class="faq"><details open><summary>আমি কী পাব?</summary><p class="editable">একটি সম্পূর্ণ editable digital product sales page template পাবেন।</p></details><details><summary>Payment করার পর কীভাবে পাব?</summary><p class="editable">আপনার নির্ধারিত delivery process অনুযায়ী file বা download link দেওয়া হবে।</p></details><details><summary>নিজের দাম কি দিতে পারব?</summary><p class="editable">হ্যাঁ, Price field থেকে আপনার নিজের দাম বসাতে পারবেন।</p></details></div></section>
+<div class="dropzone"></div><footer class="footer block" data-type="footer" draggable="true">© 2026 YOUR BRAND. All Rights Reserved.</footer>
+</div></div></main>
+<aside class="sidebar rightbar" id="rightbar"><div class="mobile-drawer-head"><button type="button" class="mobile-back" onclick="closeMobilePanels()">← <span>ফিরে যান</span></button><strong>Properties</strong></div><div class="prop" id="properties"><div class="empty">কোনো element select করুন।<br>তারপর এখানে settings দেখা যাবে।</div></div></aside>
+</div><div class="notice" id="notice"></div>
+<input type="file" id="imageInput" accept="image/*" hidden><input type="file" id="jsonInput" accept="application/json,.json" hidden>
+<div id="publishModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(9,13,29,.55);backdrop-filter:blur(3px);padding:18px;align-items:center;justify-content:center">
+  <div style="width:min(440px,100%);background:#fff;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.25);padding:18px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><strong style="font-size:18px">🚀 Publish Landing Page</strong><button type="button" onclick="closePublish()" style="margin-left:auto;border:1px solid #dce1eb;background:#fff;border-radius:9px;padding:7px 10px;font-weight:900">✕</button></div>
+    <label style="display:block;font-size:12px;font-weight:800;color:#626b82;margin:10px 0 4px">Page Name</label>
+    <input id="publishName" type="text" placeholder="My Digital Product" style="width:100%;border:1px solid #dce0e9;border-radius:9px;padding:10px">
+    <label style="display:block;font-size:12px;font-weight:800;color:#626b82;margin:10px 0 4px">URL Slug</label>
+    <input id="publishSlug" type="text" placeholder="my-product" style="width:100%;border:1px solid #dce0e9;border-radius:9px;padding:10px">
+    <p style="font-size:11px;color:#788096;margin:8px 0 12px">Live URL হবে: <b id="publishPreviewUrl">/p/my-product</b></p>
+    <button id="publishSubmit" type="button" onclick="publishProject()" style="width:100%;border:0;border-radius:10px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;font-weight:900">🚀 Publish Now</button>
+    <div id="publishResult" style="display:none;margin-top:12px;padding:12px;border-radius:10px;background:#ecfdf5;color:#166534;font-size:12px"></div>
+  </div>
+</div>
+<script>
+const page=document.getElementById('page'),canvas=document.getElementById('canvas'),props=document.getElementById('properties');
+let selected=null,selectedEdit=null,history=[],future=[],dragged=null,editSnapshotTaken=false,currentLang='bn';
+const MAX_HISTORY=50;
+
+function toast(t){const n=document.getElementById('notice');n.textContent=t;n.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>n.classList.remove('show'),1800)}
+function snapshot(){history.push(page.innerHTML);if(history.length>MAX_HISTORY)history.shift();future=[]}
+function restore(html){page.innerHTML=html;selected=null;selectedEdit=null;refreshDropzones();renderProps()}
+function undo(){if(!history.length)return toast('Undo history নেই');future.push(page.innerHTML);restore(history.pop());toast('Undo করা হয়েছে')}
+function redo(){if(!future.length)return toast('Redo history নেই');history.push(page.innerHTML);restore(future.pop());toast('Redo করা হয়েছে')}
+function selectBlock(el,editTarget=null){if(selected)selected.classList.remove('selected');document.querySelectorAll('.editable.selected-edit').forEach(x=>x.classList.remove('selected-edit'));selected=el;selectedEdit=editTarget||null;if(selected)selected.classList.add('selected');if(selectedEdit)selectedEdit.classList.add('selected-edit');renderProps(selectedEdit)}
+function refreshDropzones(){
+  page.querySelectorAll('.dropzone').forEach(z=>z.remove());
+  const blocks=[...page.querySelectorAll(':scope > .block')];
+  blocks.forEach((b,i)=>{if(i<blocks.length-1){const z=document.createElement('div');z.className='dropzone';b.after(z)}});
+}
+function bindAll(){refreshDropzones()}
+
+page.addEventListener('click',e=>{
+  const langBtn=e.target.closest('.lang button');
+  if(langBtn){e.preventDefault();setLang(langBtn.textContent.trim()==='English'?'en':'bn');return}
+  const editable=e.target.closest('.editable');
+  const block=e.target.closest('.block');
+  if(editable){e.stopPropagation();selectBlock(block,editable);if(!editable.hasAttribute('contenteditable'))editable.setAttribute('contenteditable','true');if(window.matchMedia('(max-width:900px)').matches)openMobilePanel('props');return}
+  if(block){selectBlock(block);if(e.target.closest('a'))e.preventDefault();if(window.matchMedia('(max-width:900px)').matches)openMobilePanel('props')}
+});
+page.addEventListener('focusin',e=>{if(e.target.closest('.editable')){if(!editSnapshotTaken){snapshot();editSnapshotTaken=true}}});
+page.addEventListener('focusout',e=>{if(e.target.closest('.editable'))editSnapshotTaken=false});
+page.addEventListener('input',e=>{if(e.target.closest('.editable')){autoSaveSoon()}});
+
+page.addEventListener('dragstart',e=>{const b=e.target.closest('.block');if(!b)return;dragged=b;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','block')});
+page.addEventListener('dragover',e=>{const b=e.target.closest('.block'),z=e.target.closest('.dropzone');if(b||z)e.preventDefault()});
+page.addEventListener('dragleave',e=>{const z=e.target.closest('.dropzone');if(z)z.classList.remove('over')});
+page.addEventListener('dragenter',e=>{const z=e.target.closest('.dropzone');if(z)z.classList.add('over')});
+page.addEventListener('drop',e=>{
+  const z=e.target.closest('.dropzone');const b=e.target.closest('.block');
+  if(!dragged)return;
+  e.preventDefault();
+  if(z){snapshot();z.classList.remove('over');z.before(dragged);refreshDropzones();selectBlock(dragged);toast('Section moved')}
+  else if(b&&b!==dragged){snapshot();b.before(dragged);refreshDropzones();selectBlock(dragged);toast('Section moved')}
+  dragged=null;
+});
+
+function renderProps(editTarget=null){
+  if(!selected){props.innerHTML='<div class="empty">কোনো element select করুন।<br>তারপর এখানে settings দেখা যাবে।</div>';return}
+  const target=editTarget||selected.querySelector('.editable')||selected;
+  const label=selected.dataset.type||target.dataset.edit||target.tagName.toLowerCase();
+  let html='<h3>⚙ Properties</h3><div class="help">Selected: '+escapeHTML(label)+'</div>';
+  if(target.classList.contains('editable')||target.tagName==='A'||target.tagName==='H1'||target.tagName==='H2'||target.tagName==='P'||target.tagName==='SPAN'||target.tagName==='DIV'){
+    html+='<label>Text / Content</label><textarea id="pText">'+escapeHTML(target.innerText.trim())+'</textarea><div class="row"><button class="mini" onclick="applyText()">Apply</button><button class="mini" onclick="focusText()">Edit on Canvas</button></div>';
+    html+='<label>Font</label><select id="pFont"><option>Noto Sans Bengali</option><option>Hind Siliguri</option><option>Anek Bangla</option><option>Noto Serif Bengali</option><option>Tiro Bangla</option><option>Noto Sans</option></select>';
+    html+='<label>Text Color</label><input id="pColor" type="color" value="'+rgbToHex(getComputedStyle(target).color)+'">';
+    html+='<label>Background</label><input id="pBg" type="color" value="'+rgbToHex(getComputedStyle(target).backgroundColor)+'">';
+  }
+  const a=target.tagName==='A'?target:target.querySelector?.('a');
+  if(a){html+='<label>Link URL</label><input id="pUrl" value="'+escapeAttr(a.getAttribute('href')||'#')+'"><button class="mini" style="margin-top:7px;width:100%" onclick="applyLink()">Save Link</button>'}
+  html+='<div class="row" style="margin-top:10px"><button class="mini" onclick="duplicateSelected()">Duplicate</button><button class="mini danger" onclick="deleteSelected()">Delete</button></div>';html+='<div class="mobile-only mobile-reorder"><button type="button" onclick="moveSelected(-1)">↑ উপরে নিন</button><button type="button" onclick="moveSelected(1)">↓ নিচে নিন</button></div><div class="mobile-only" style="margin-top:8px"><button type="button" class="mobile-close" onclick="closeMobilePanels()">✓ Done</button></div>';
+  props.innerHTML=html;
+  const pf=document.getElementById('pFont');if(pf)pf.value=normalizeFont(getComputedStyle(target).fontFamily);
+}
+function normalizeFont(v){return (v||'').replaceAll('"','').split(',')[0].trim()||'Noto Sans Bengali'}
+function getEditTarget(){return selectedEdit||selected?.querySelector('.editable')||selected}
+function applyText(){const t=document.getElementById('pText');const target=getEditTarget();if(!t||!target)return;snapshot();target.textContent=t.value;target.setAttribute('contenteditable','true');selectedEdit=target;renderProps(target);autoSaveSoon();toast('Text updated')}
+function focusText(){const target=getEditTarget();if(!target)return;target.setAttribute('contenteditable','true');target.focus();const r=document.createRange();r.selectNodeContents(target);r.collapse(false);const sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);toast('Canvas-এর লেখাটি edit করুন')}
+function applyLink(){const url=document.getElementById('pUrl')?.value.trim();const target=getEditTarget();const a=target?.tagName==='A'?target:target?.querySelector?.('a');if(!a||!url)return;snapshot();a.setAttribute('href',url);autoSaveSoon();toast('Link saved')}
+function duplicateSelected(){if(!selected)return;snapshot();const c=selected.cloneNode(true);c.classList.remove('selected');selected.after(c);refreshDropzones();selectBlock(c);toast('Duplicated')}
+function deleteSelected(){if(!selected)return;if(selected.dataset.type==='hero')return toast('Hero section delete করা যাবে না');snapshot();selected.remove();selected=null;selectedEdit=null;refreshDropzones();renderProps();toast('Deleted')}
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function escapeAttr(s){return escapeHTML(s)}
+function rgbToHex(rgb){if(!rgb||rgb==='transparent')return '#ffffff';const m=rgb.match(/\d+/g);if(!m)return '#ffffff';return '#'+m.slice(0,3).map(x=>(+x).toString(16).padStart(2,'0')).join('')}
+
+document.addEventListener('change',e=>{
+  if(e.target.id==='pFont'){const target=getEditTarget();if(!target)return;snapshot();target.style.fontFamily=e.target.value+',sans-serif';autoSaveSoon();toast('Font changed')}
+  if(e.target.id==='pColor'){const target=getEditTarget();if(!target)return;snapshot();target.style.color=e.target.value;autoSaveSoon()}
+  if(e.target.id==='pBg'){if(!selected)return;snapshot();selected.style.background=e.target.value;autoSaveSoon()}
+});
+
+function addBlock(type){
+  snapshot();
+  const s=document.createElement('section');s.className='block section';s.dataset.type=type;s.draggable=true;
+  const esc=`<div class="empty">Upload Image</div>`;
+  if(type==='text')s.innerHTML='<h2 class="section-title editable" contenteditable="true">আপনার নতুন শিরোনাম এখানে</h2><p class="muted editable" contenteditable="true" style="text-align:center">এখানে আপনার product সম্পর্কে গুরুত্বপূর্ণ তথ্য লিখুন।</p>';
+  if(type==='image')s.innerHTML='<div style="text-align:center"><img class="uploaded-image" alt="Product image" style="max-width:100%;max-height:360px;border-radius:16px;object-fit:cover" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=700 height=350%3E%3Crect width=100%25 height=100%25 fill=\'%23eeeef5\'/%3E%3Ctext x=50%25 y=50%25 dominant-baseline=middle text-anchor=middle font-size=24 fill=\'%23777\'%3EUpload Image%3C/text%3E%3C/svg%3E"><br><button class="mini" onclick="uploadImage(this)">Upload Image</button></div>';
+  if(type==='button')s.innerHTML='<div style="text-align:center"><a href="#" class="btn btn-primary editable" contenteditable="true">এখনই কিনুন</a></div>';
+  if(type==='offer')s.innerHTML='<div class="product"><div><h2 class="editable" contenteditable="true">🔥 বিশেষ অফার</h2><p class="muted editable" contenteditable="true">আজই অর্ডার করলে বিশেষ মূল্য পাবেন।</p></div><aside class="price"><small>অফার মূল্য</small><div class="price-now">৳ <span class="editable" contenteditable="true">299</span></div><div class="old">৳ <span class="editable" contenteditable="true">599</span></div><div class="offer">LIMITED OFFER</div></aside></div>';
+  if(type==='countdown')s.innerHTML='<h2 class="section-title editable" contenteditable="true">অফার শেষ হতে সময় বাকি</h2><div class="countdown"><div class="timebox"><b>02</b><small>দিন</small></div><div class="timebox"><b>12</b><small>ঘণ্টা</small></div><div class="timebox"><b>30</b><small>মিনিট</small></div><div class="timebox"><b>00</b><small>সেকেন্ড</small></div></div>';
+  if(type==='faq')s.innerHTML='<h2 class="section-title editable" contenteditable="true">❓ FAQ</h2><div class="faq"><details open><summary contenteditable="true">প্রশ্ন লিখুন</summary><p class="editable" contenteditable="true">উত্তর লিখুন।</p></details></div>';
+  if(type==='payment')s.innerHTML='<div class="payment" style="padding:20px"><h2 class="section-title editable" contenteditable="true">পেমেন্ট তথ্য</h2><div class="pay-grid"><div class="pay"><strong>bKash</strong><div class="field editable" contenteditable="true">01XXXXXXXXX</div></div><div class="pay"><strong>Nagad</strong><div class="field editable" contenteditable="true">01XXXXXXXXX</div></div></div></div>';
+  if(type==='spacer')s.innerHTML='<div style="height:80px"></div>';
+  const blocks=[...page.querySelectorAll(':scope > .block')];
+  const target=selected&&selected.parentElement===page?selected:blocks.at(-1);
+  if(target)target.after(s);else page.appendChild(s);
+  refreshDropzones();selectBlock(s);autoSaveSoon();toast('নতুন section যোগ হয়েছে');
+}
+function uploadImage(btn){const input=document.getElementById('imageInput');input.onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(!f.type.startsWith('image/'))return toast('শুধু image file দিন');const r=new FileReader();r.onload=()=>{const block=btn.closest('.block');const img=block?.querySelector('.uploaded-image');if(!img)return toast('Image area পাওয়া যায়নি');snapshot();img.src=r.result;autoSaveSoon();toast('Image added')};r.readAsDataURL(f)};input.value='';input.click()}
+function setView(v,btn){canvas.classList.remove('mobile','tablet');if(v!=='desktop')canvas.classList.add(v);document.querySelectorAll('.viewbtn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');if(window.matchMedia('(max-width:900px)').matches)toast(v==='mobile'?'Mobile preview selected':v==='tablet'?'Tablet preview selected':'Desktop preview selected')}
+function syncMobileOverlay(){
+  const open=document.getElementById('leftbar').classList.contains('open')||document.getElementById('rightbar').classList.contains('open');
+  document.getElementById('mobileOverlay').classList.toggle('show',open);
+  document.body.classList.toggle('panel-open',open);
+}
+function closeMobilePanels(){
+  const left=document.getElementById('leftbar'), right=document.getElementById('rightbar');
+  left.classList.remove('open'); right.classList.remove('open');
+  left.style.removeProperty('transform'); right.style.removeProperty('transform');
+  syncMobileOverlay();
+}
+function openMobilePanel(which){
+  const left=document.getElementById('leftbar'), right=document.getElementById('rightbar');
+  left.style.removeProperty('transform'); right.style.removeProperty('transform');
+  if(which==='tools'){
+    right.classList.remove('open'); left.classList.add('open');
+  }else{
+    left.classList.remove('open'); right.classList.add('open');
+  }
+  syncMobileOverlay();
+}
+function showCanvas(){closeMobilePanels();window.scrollTo({top:0,behavior:'smooth'});}
+function openAddMenu(){openMobilePanel('tools');setTimeout(()=>{document.getElementById('leftbar').scrollTo({top:0,behavior:'smooth'});},30);toast('Add Elements থেকে নতুন section বেছে নিন')}
+function enterPreview(){closeMobilePanels();document.body.classList.add('preview-mode');document.body.setAttribute('data-preview','1');window.scrollTo({top:0,behavior:'instant'});}
+function exitPreview(){document.body.classList.remove('preview-mode');document.body.removeAttribute('data-preview');}
+function handleMobileBack(){
+  const left=document.getElementById('leftbar'), right=document.getElementById('rightbar');
+  if(left.classList.contains('open')||right.classList.contains('open')){closeMobilePanels();return true;}
+  return false;
+}
+window.addEventListener('popstate',()=>{handleMobileBack()});
+function toggleLeft(){
+  const left=document.getElementById('leftbar');
+  if(window.matchMedia('(max-width:900px)').matches){
+    const opening=!left.classList.contains('open');
+    document.getElementById('rightbar').classList.remove('open');
+    left.classList.toggle('open',opening);
+    syncMobileOverlay();
+  }else left.classList.toggle('open');
+}
+function toggleRight(){
+  const right=document.getElementById('rightbar');
+  if(window.matchMedia('(max-width:900px)').matches){
+    const opening=!right.classList.contains('open');
+    document.getElementById('leftbar').classList.remove('open');
+    right.classList.toggle('open',opening);
+    syncMobileOverlay();
+  }else right.classList.toggle('open');
+}
+function moveSelected(direction){
+  if(!selected)return toast('আগে একটি section select করুন');
+  const blocks=[...page.querySelectorAll(':scope > .block')];
+  const idx=blocks.indexOf(selected);
+  if(idx<0)return;
+  const targetIndex=idx+direction;
+  if(targetIndex<0||targetIndex>=blocks.length)return toast(direction<0?'এটি প্রথম section':'এটি শেষ section');
+  snapshot();
+  if(direction<0) selected.parentNode.insertBefore(selected,blocks[targetIndex]);
+  else selected.parentNode.insertBefore(selected,blocks[targetIndex].nextSibling);
+  refreshDropzones();selectBlock(selected,selectedEdit);autoSaveSoon();toast('Section order updated');
+}
+function openPublish(){
+  const modal=document.getElementById('publishModal');
+  const name=document.getElementById('publishName');
+  const slug=document.getElementById('publishSlug');
+  const result=document.getElementById('publishResult');
+  if(!name.value) name.value=(page.querySelector('.brand-page')?.textContent||'My Digital Product').trim();
+  if(!slug.value) slug.value=makeSlug(name.value)||'my-product';
+  updatePublishPreview();
+  result.style.display='none';result.innerHTML='';
+  modal.style.display='flex';
+  setTimeout(()=>name.focus(),50);
+}
+function closePublish(){document.getElementById('publishModal').style.display='none'}
+function makeSlug(v){return String(v||'').toLowerCase().trim().replace(/[^a-z0-9\u0980-\u09ff\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,48)}
+function updatePublishPreview(){const s=makeSlug(document.getElementById('publishSlug').value)||'my-product';document.getElementById('publishPreviewUrl').textContent=location.origin+'/p/'+s}
+async function publishProject(){
+  const btn=document.getElementById('publishSubmit'),result=document.getElementById('publishResult');
+  const name=document.getElementById('publishName').value.trim()||'My Digital Product';
+  const slug=makeSlug(document.getElementById('publishSlug').value)||makeSlug(name)||'my-product';
+  const html=buildExportHTML();
+  btn.disabled=true;btn.textContent='⏳ Publishing...';result.style.display='none';
+  try{
+    const res=await fetch('/api/publish',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,slug,html})});
+    const raw=await res.text();
+    let data=null;
+    try{ data=raw?JSON.parse(raw):null; }catch(parseErr){
+      const ct=res.headers.get('content-type')||'';
+      const preview=raw.replace(/\s+/g,' ').slice(0,220);
+      throw new Error('Publish API returned non-JSON response ('+res.status+(ct?'; '+ct:'')+'). '+(preview||'Empty response'));
+    }
+    if(!res.ok||!data?.ok) throw new Error(data?.error||('Publish failed (HTTP '+res.status+')'));
+    const url=data.url||location.origin+'/p/'+slug;
+    result.style.display='block';result.innerHTML='✅ <b>Published Successfully!</b><br><a href="'+url+'" target="_blank" rel="noopener" style="display:block;margin-top:6px;color:#166534;word-break:break-all">'+url+'</a><button type="button" onclick="copyText('+JSON.stringify(url)+')" style="margin-top:8px;border:1px solid #bbf7d0;background:#fff;border-radius:8px;padding:7px 10px;font-weight:800;color:#166534">Copy URL</button>';
+    toast('Landing page published');
+  }catch(e){result.style.display='block';result.style.background='#fff1f2';result.style.color='#be123c';result.textContent='❌ '+(e.message||'Publish failed');toast('Publish failed')}
+  finally{btn.disabled=false;btn.textContent='🚀 Publish Now'}
+}
+function copyText(v){navigator.clipboard?.writeText(v).then(()=>toast('Live URL copied')).catch(()=>toast('URL: '+v))}
+function buildExportHTML(){
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelector('.appbar')?.remove();clone.querySelectorAll('.sidebar,.canvas-tools,.notice,#imageInput,#jsonInput,#publishModal,.mobile-bottom-nav,.preview-exit').forEach(x=>x.remove());
+  clone.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));clone.querySelectorAll('[draggable]').forEach(x=>x.removeAttribute('draggable'));clone.querySelectorAll('.dropzone').forEach(x=>x.remove());
+  clone.querySelectorAll('.editable').forEach(x=>x.removeAttribute('contenteditable'));clone.querySelectorAll('button').forEach(b=>{if(!b.closest('.lang'))b.remove()});
+  clone.querySelectorAll('.lang button').forEach(b=>{b.setAttribute('type','button');b.removeAttribute('onclick')});
+  clone.querySelectorAll('script').forEach(x=>x.remove());
+  return '<!doctype html>\n'+clone.outerHTML;
+}
+document.getElementById('publishSlug')?.addEventListener('input',updatePublishPreview);document.getElementById('publishName')?.addEventListener('input',e=>{const slug=document.getElementById('publishSlug');if(!slug.dataset.edited)slug.value=makeSlug(e.target.value);updatePublishPreview()});document.getElementById('publishSlug')?.addEventListener('input',e=>{e.target.dataset.edited='1';updatePublishPreview()});
+function collectState(){return {html:page.innerHTML,style:document.documentElement.getAttribute('style')||'',canvasUiColor:document.getElementById('canvasWrap')?.style.background||'',lang:currentLang,version:'2.2.2-mobile'}}
+function saveProject(){localStorage.setItem('dp-builder-project',JSON.stringify(collectState()));const st=document.getElementById('saveStatus');st.style.display='inline';st.textContent='Saved';toast('Project saved')}
+function autoSaveSoon(){clearTimeout(window.__autosave);window.__autosave=setTimeout(()=>localStorage.setItem('dp-builder-project',JSON.stringify(collectState())),350)}
+function loadProject(){const raw=localStorage.getItem('dp-builder-project');if(!raw)return toast('Saved project পাওয়া যায়নি');try{const st=JSON.parse(raw);snapshot();page.innerHTML=st.html;document.documentElement.setAttribute('style',st.style||'');const cw=document.getElementById('canvasWrap');if(cw&&st.canvasUiColor)cw.style.background=st.canvasUiColor;const ci=document.getElementById('canvasUiColor');if(ci&&st.canvasUiColor){const m=st.canvasUiColor.match(/#[0-9a-fA-F]{6}/);if(m)ci.value=m[0]}currentLang=st.lang||'bn';refreshDropzones();setLang(currentLang,true);toast('Project loaded')}catch(e){toast('Load failed')}}
+function exportJSON(){const blob=new Blob([JSON.stringify(collectState(),null,2)],{type:'application/json'});downloadBlob(blob,'digital-product-project.json')}
+function importJSON(){const input=document.getElementById('jsonInput');input.value='';input.onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const st=JSON.parse(r.result);if(!st.html)throw Error('html');snapshot();page.innerHTML=st.html;document.documentElement.setAttribute('style',st.style||'');currentLang=st.lang||'bn';refreshDropzones();setLang(currentLang,true);toast('Project imported')}catch(x){toast('Invalid project file')}};r.readAsText(f)};input.click()}
+document.addEventListener('input',e=>{if(e.target.id==='canvasUiColor'){const cw=document.getElementById('canvasWrap');if(cw){const c=e.target.value;cw.style.background='linear-gradient(135deg,'+c+',#f9fafc)';autoSaveSoon();}}});
+function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function downloadHTML(){const html=buildExportHTML();downloadBlob(new Blob([html],{type:'text/html'}),'digital-product-landing-page.html');toast('Clean HTML exported')}
+function applyTemplate(kind){
+  snapshot();
+  const h=page.querySelector('.hero h1'),lead=page.querySelector('.hero .lead'),badge=page.querySelector('.hero .badge'),pt=page.querySelector('.product h2');
+  if(kind==='minimal'){h.innerHTML='Simple <span class="grad">Digital Product</span> Sales Page';lead.textContent='কম distraction, বেশি conversion—আপনার product-এর মূল offer সামনে রাখুন.';badge.textContent='✦ Minimal Sales Page'}
+  if(kind==='course'){h.innerHTML='আপনার <span class="grad">Online Course</span> Launch করুন';lead.textContent='একটি conversion-focused course sales page দিয়ে আপনার কোর্স সুন্দরভাবে উপস্থাপন করুন।';badge.textContent='✦ Online Course';pt.textContent='কোর্সে যা যা থাকছে'}
+  if(kind==='product'){h.innerHTML='আপনার ডিজিটাল পণ্যের জন্য একটি <span class="grad">Professional Sales Page</span>';lead.textContent='কোডিংয়ের ঝামেলা ছাড়াই আপনার পণ্যকে সুন্দরভাবে উপস্থাপন করুন এবং কাস্টমারকে দ্রুত সিদ্ধান্ত নিতে সাহায্য করুন।';badge.textContent='✦ প্রফেশনাল Landing Page';pt.textContent='Professional Digital Product Template'}
+  refreshDropzones();selectBlock(page.querySelector('.block'));autoSaveSoon();toast('Template applied')
+}
+
+const pageLang={
+ bn:{brand:'YOUR BRAND',badge:'✦ প্রফেশনাল Landing Page',headline:'আপনার ডিজিটাল পণ্যের জন্য একটি <span class="grad">Professional Sales Page</span>',lead:'কোডিংয়ের ঝামেলা ছাড়াই আপনার পণ্যকে সুন্দরভাবে উপস্থাপন করুন এবং কাস্টমারকে দ্রুত সিদ্ধান্ত নিতে সাহায্য করুন।',cta1:'এখনই কিনুন',cta2:'বিস্তারিত দেখুন',productTitle:'Professional Digital Product Template',productDesc:'নিজের নাম, ছবি, লেখা, দাম ও লিংক বসিয়ে ব্যবহার করুন। এটি একটি sales-ready layout হিসেবে তৈরি করা হয়েছে।',linksTitle:'গুরুত্বপূর্ণ <span class="grad">লিংকসমূহ</span>',buy:'এখনই অর্ডার করুন',download:'Download',wa:'WhatsApp Support',pay:'পেমেন্ট করুন',count:'অফার শেষ হবে',faq:'❓ সাধারণ জিজ্ঞাসা',footer:'© 2026 YOUR BRAND. All Rights Reserved.'},
+ en:{brand:'YOUR BRAND',badge:'✦ Professional Landing Page',headline:'A <span class="grad">Professional Sales Page</span> for Your Digital Product',lead:'Present your product beautifully without coding and help customers make a faster buying decision.',cta1:'Buy Now',cta2:'View Details',productTitle:'Professional Digital Product Template',productDesc:'Add your own name, image, copy, price and links. Built as a sales-ready layout for digital products.',linksTitle:'Important <span class="grad">Links</span>',buy:'Order Now',download:'Download',wa:'WhatsApp Support',pay:'Payment Information',count:'Offer Ends In',faq:'❓ Frequently Asked Questions',footer:'© 2026 YOUR BRAND. All Rights Reserved.'}
+};
+function setText(sel,val){const el=page.querySelector(sel);if(el)el.innerHTML=val}
+function setLang(lang,silent=false){currentLang=lang==='en'?'en':'bn';const d=pageLang[currentLang];
+  setText('.brand-page',d.brand);setText('.badge',d.badge);setText('.hero h1',d.headline);setText('.hero .lead',d.lead);setText('[data-edit="cta1"]',d.cta1);setText('[data-edit="cta2"]',d.cta2);setText('[data-edit="productTitle"]',d.productTitle);setText('[data-edit="productDesc"]',d.productDesc);setText('.links .section-title',d.linksTitle);setText('[data-edit="buyBtn"]',d.buy);setText('[data-edit="downloadBtn"]',d.download);setText('[data-edit="waBtn"]',d.wa);setText('.payment .section-title',d.pay);setText('[data-type="countdown"] .section-title',d.count);setText('[data-type="faq"] .section-title',d.faq);const foot=page.querySelector('.footer');if(foot)foot.innerHTML=d.footer;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',(currentLang==='bn'&&b.textContent.trim()==='বাংলা')||(currentLang==='en'&&b.textContent.trim()==='English')));
+  document.documentElement.lang=currentLang;if(!silent)autoSaveSoon();
+}
+
+let end=Date.now()+((2*86400+12*3600+30*60)*1000);setInterval(()=>{let x=Math.max(0,end-Date.now());let d=Math.floor(x/86400000);x%=86400000;let h=Math.floor(x/3600000);x%=3600000;let m=Math.floor(x/60000);let ss=Math.floor(x/1000);['dd','hh','mm','ss'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=String([d,h,m,ss][i]).padStart(2,'0')})},1000);
+window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo()}if(e.key==='Delete'&&selected&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)&&!document.activeElement.isContentEditable)deleteSelected()});
+refreshDropzones();setLang('bn',true);
+window.addEventListener('resize',()=>{if(window.innerWidth>900)closeMobilePanels();});
+window.addEventListener('orientationchange',()=>setTimeout(()=>{if(window.innerWidth<=900)showCanvas();},120));
+// On touch devices, native HTML5 drag is unreliable; mobile uses explicit ↑/↓ section controls for dependable reordering.
+if('ontouchstart' in window){page.querySelectorAll('.block').forEach(b=>b.setAttribute('draggable','false'));}
+
 </script></body></html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
